@@ -1,0 +1,577 @@
+<title>Four Marks for Ageless</title>
+<style>
+  /* ---------------------------------------------------------------
+     TOKENS
+     Light palette is the Ageless design system, already approved.
+     Dark palette is a warm near-black, not a cold grey, so the brand
+     still reads warm if the viewer's device is in dark mode.
+     Every value here was measured for contrast, not guessed.
+  ----------------------------------------------------------------*/
+  :root {
+    --paper:   #FAF6F0;
+    --surface: #FFFFFF;
+    --ink:     #262320;
+    --muted:   #55504A;
+    --green:   #1E5442;
+    --clay:    #7E3D1E;
+    --hairline:#E2DACE;
+    --rule:    #C9BFB1;
+
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            "Helvetica Neue", Arial, sans-serif;
+    --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+
+    --measure: 34rem;
+    --shell: 62rem;
+  }
+  /* System dark mode, only when the viewer has not forced light */
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper:   #1A1714;
+      --surface: #232019;
+      --ink:     #F0EBE3;
+      --muted:   #B5ADA2;
+      --green:   #7FB79E;
+      --clay:    #E09A6F;
+      --hairline:#3A342B;
+      --rule:    #4A4238;
+    }
+  }
+  /* Explicit dark choice wins in the other direction */
+  :root[data-theme="dark"] {
+    --paper:   #1A1714;
+    --surface: #232019;
+    --ink:     #F0EBE3;
+    --muted:   #B5ADA2;
+    --green:   #7FB79E;
+    --clay:    #E09A6F;
+    --hairline:#3A342B;
+    --rule:    #4A4238;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 1.125rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .shell {
+    max-width: var(--shell);
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+
+  /* --- Small caps utility label, used for every annotation ------- */
+  .label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  /* --- Document head -------------------------------------------- */
+  .masthead { border-bottom: 2px solid var(--ink); padding-bottom: 1.5rem; }
+  .masthead h1 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 2.75rem);
+    line-height: 1.15;
+    font-weight: 400;
+    text-wrap: balance;
+    margin: 0.75rem 0 0;
+  }
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .meta div { display: flex; flex-direction: column; gap: 0.15rem; }
+  .meta dd { margin: 0; font-size: 0.95rem; }
+
+  .intro {
+    max-width: var(--measure);
+    margin: 2rem 0 0;
+    color: var(--muted);
+  }
+  .intro strong { color: var(--ink); font-weight: 600; }
+
+  /* --- One concept ---------------------------------------------- */
+  .concept { margin-top: 4.5rem; }
+  .concept-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.6rem;
+  }
+  .letter {
+    font-family: var(--serif);
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--clay);
+  }
+  .concept-head h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin: 0;
+    flex: 1;
+  }
+
+  /* The specimen stage always keeps the light brand colours, in both
+     page themes, because that is the ground the logo actually lives on. */
+  .stage {
+    background: #FAF6F0;
+    border: 1px solid #E2DACE;
+    border-radius: 4px;
+    margin-top: 1.5rem;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem 4rem;
+    --mark-ink: #1E5442;
+    --mark-accent: #7E3D1E;
+    --mark-bg: #FAF6F0;
+  }
+
+  .mark { display: block; }
+
+  /* --- The horizontal lockup ------------------------------------ */
+  .lockup { display: flex; align-items: center; gap: 0.9rem; }
+  .lockup .mark { flex: none; }
+  .wordmark {
+    font-family: var(--serif);
+    font-size: 2.5rem;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: #1E5442;
+  }
+  .wordmark .dot { color: #7E3D1E; }
+  .locale {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #55504A;
+    margin-top: 0.35rem;
+  }
+
+  /* Option D: type resting on a foundation line */
+  .foundation { border-bottom: 3px solid #7E3D1E; padding-bottom: 0.35rem; }
+
+  .rationale { max-width: var(--measure); margin: 1.5rem 0 0; }
+
+  /* --- The identical five-test strip ----------------------------- */
+  .tests {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.75rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .test {
+    flex: 1 1 8rem;
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .test-stage {
+    background: #FAF6F0;
+    min-height: 5.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    --mark-ink: #1E5442;
+    --mark-accent: #7E3D1E;
+    --mark-bg: #FAF6F0;
+  }
+  /* Reversed: paper on deep green */
+  .test-stage.reversed {
+    background: #1E5442;
+    --mark-ink: #FAF6F0;
+    --mark-accent: #E8B98E;
+    --mark-bg: #1E5442;
+  }
+  .test-stage.reversed .mini-word { color: #FAF6F0; }
+  .test-stage.reversed .mini-word .dot { color: #E8B98E; }
+  /* One colour, the invoice and fax test */
+  .test-stage.mono {
+    background: #FFFFFF;
+    --mark-ink: #262320;
+    --mark-accent: #262320;
+    --mark-bg: #FFFFFF;
+  }
+  .test-stage.mono .mini-word { color: #262320; }
+  .test-stage.mono .mini-word .dot { color: #262320; }
+  .test-cap {
+    border-top: 1px solid var(--hairline);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .mini-word {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1;
+    color: #1E5442;
+  }
+  .mini-word .dot { color: #7E3D1E; }
+
+  /* --- Closing recommendation ------------------------------------ */
+  .verdict {
+    margin-top: 5rem;
+    border-top: 2px solid var(--ink);
+    padding-top: 1.5rem;
+  }
+  .verdict h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 1.6rem;
+    margin: 0.5rem 0 1rem;
+  }
+  .verdict p { max-width: var(--measure); }
+  .verdict ul { max-width: var(--measure); padding-left: 1.15rem; }
+  .verdict li { margin-bottom: 0.6rem; }
+  .pick {
+    display: inline-block;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    color: var(--paper);
+    background: var(--green);
+    padding: 0.3rem 0.7rem;
+    border-radius: 3px;
+  }
+
+  a { color: var(--green); }
+  a:focus-visible, .test:focus-visible {
+    outline: 3px solid var(--clay);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+
+<!-- ---------------------------------------------------------------
+     The four marks, defined once as SVG symbols and reused at every
+     size below. Colours come from CSS variables, which is why the
+     same shape can appear green, reversed, or one-colour black
+     without me drawing it four times.
+---------------------------------------------------------------- -->
+<svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <!-- A: one continuous stroke, wall to roof to ring -->
+    <symbol id="mark-a" viewBox="0 0 64 64">
+      <path d="M22 46 V34 L32 25 L42 34 V46 A17.2 17.2 0 1 0 22 46"
+            fill="none" stroke="var(--mark-ink)" stroke-width="4.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+
+    <!-- B: the A as a gable, with the light still on -->
+    <symbol id="mark-b" viewBox="0 0 64 64">
+      <path d="M15 50 L32 16 L49 50" fill="none" stroke="var(--mark-ink)"
+            stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M21 41 H43" fill="none" stroke="var(--mark-ink)"
+            stroke-width="5" stroke-linecap="round"/>
+      <circle cx="32" cy="33" r="3.2" fill="var(--mark-accent)"/>
+    </symbol>
+
+    <!-- C: solid seal, house in negative space, one warm window -->
+    <symbol id="mark-c" viewBox="0 0 64 64">
+      <circle cx="32" cy="32" r="30" fill="var(--mark-ink)"/>
+      <path d="M32 14 L50 30 V52 H14 V30 Z" fill="var(--mark-bg)"/>
+      <rect x="28" y="35" width="8" height="10" rx="1.5" fill="var(--mark-accent)"/>
+    </symbol>
+
+    <!-- D: the monogram that a wordmark would need for a favicon -->
+    <symbol id="mark-d" viewBox="0 0 64 64">
+      <text x="30" y="48" text-anchor="middle"
+            font-family="Georgia, 'Times New Roman', serif"
+            font-size="52" fill="var(--mark-ink)">A</text>
+      <circle cx="54" cy="45" r="4" fill="var(--mark-accent)"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="shell">
+
+  <header class="masthead">
+    <p class="label">Identity study, first round</p>
+    <h1>Four marks for Ageless</h1>
+    <dl class="meta">
+      <div><dt class="label">Client</dt><dd>Amin Osman</dd></div>
+      <div><dt class="label">Serving</dt><dd>Ottawa and Toronto</dd></div>
+      <div><dt class="label">Date</dt><dd>22 August 2026</dd></div>
+      <div><dt class="label">Decision</dt><dd>Reply with one letter</dd></div>
+    </dl>
+  </header>
+
+  <p class="intro">
+    Each mark is shown large, then in the lockup that would sit in the site
+    header, then put through the same five tests: 32 pixels, 24 pixels, reversed
+    on the deep green, and one colour for print. <strong>Judge them at 24 pixels,
+    not at full size.</strong> That is the size a mark spends most of its life at,
+    and it is where weak marks fall apart.
+  </p>
+
+  <!-- ============================ A ============================= -->
+  <section class="concept">
+    <div class="concept-head">
+      <span class="letter" aria-hidden="true">A</span>
+      <h2>The Unbroken Line</h2>
+    </div>
+
+    <div class="stage">
+      <svg class="mark" width="132" height="132" role="img"
+           aria-label="A house drawn in one continuous line that curves around into a ring">
+        <use href="#mark-a"></use>
+      </svg>
+      <div class="lockup">
+        <svg class="mark" width="56" height="56" aria-hidden="true"><use href="#mark-a"></use></svg>
+        <div>
+          <div class="wordmark">Ageless</div>
+          <div class="locale">Ottawa and Toronto</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="rationale">
+      One stroke, never lifted. It climbs the wall, crosses the roof, comes down
+      the far side, then sweeps up and over the whole house and back to where it
+      began. The bottom stays open, so it reads as a doorway rather than an
+      enclosure. That is the right message for a business whose entire point is
+      that nobody is being shut in anywhere.
+    </p>
+
+    <ul class="tests">
+      <li class="test">
+        <div class="test-stage"><svg class="mark" width="32" height="32" aria-hidden="true"><use href="#mark-a"></use></svg></div>
+        <div class="test-cap">32 px</div>
+      </li>
+      <li class="test">
+        <div class="test-stage"><svg class="mark" width="24" height="24" aria-hidden="true"><use href="#mark-a"></use></svg></div>
+        <div class="test-cap">24 px favicon</div>
+      </li>
+      <li class="test">
+        <div class="test-stage reversed"><svg class="mark" width="44" height="44" aria-hidden="true"><use href="#mark-a"></use></svg></div>
+        <div class="test-cap">Reversed</div>
+      </li>
+      <li class="test">
+        <div class="test-stage mono"><svg class="mark" width="44" height="44" aria-hidden="true"><use href="#mark-a"></use></svg></div>
+        <div class="test-cap">One colour</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============================ B ============================= -->
+  <section class="concept">
+    <div class="concept-head">
+      <span class="letter" aria-hidden="true">B</span>
+      <h2>The Lit Window</h2>
+    </div>
+
+    <div class="stage">
+      <svg class="mark" width="132" height="132" role="img"
+           aria-label="The letter A drawn as a house gable with a warm dot inside, like a light left on">
+        <use href="#mark-b"></use>
+      </svg>
+      <div class="lockup">
+        <svg class="mark" width="56" height="56" aria-hidden="true"><use href="#mark-b"></use></svg>
+        <div>
+          <div class="wordmark">Ageless</div>
+          <div class="locale">Ottawa and Toronto</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="rationale">
+      The A of Ageless drawn as a gable, with the light still on inside. To an
+      adult child driving past at eleven at night, a lit window is the most
+      reassuring thing there is. It means someone is home and someone is fine.
+      Three strokes and a dot, which is why it survives being shrunk further than
+      the other three.
+    </p>
+
+    <ul class="tests">
+      <li class="test">
+        <div class="test-stage"><svg class="mark" width="32" height="32" aria-hidden="true"><use href="#mark-b"></use></svg></div>
+        <div class="test-cap">32 px</div>
+      </li>
+      <li class="test">
+        <div class="test-stage"><svg class="mark" width="24" height="24" aria-hidden="true"><use href="#mark-b"></use></svg></div>
+        <div class="test-cap">24 px favicon</div>
+      </li>
+      <li class="test">
+        <div class="test-stage reversed"><svg class="mark" width="44" height="44" aria-hidden="true"><use href="#mark-b"></use></svg></div>
+        <div class="test-cap">Reversed</div>
+      </li>
+      <li class="test">
+        <div class="test-stage mono"><svg class="mark" width="44" height="44" aria-hidden="true"><use href="#mark-b"></use></svg></div>
+        <div class="test-cap">One colour</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============================ C ============================= -->
+  <section class="concept">
+    <div class="concept-head">
+      <span class="letter" aria-hidden="true">C</span>
+      <h2>The Hearth Seal</h2>
+    </div>
+
+    <div class="stage">
+      <svg class="mark" width="132" height="132" role="img"
+           aria-label="A solid green disc with a house cut out of it and one lit window">
+        <use href="#mark-c"></use>
+      </svg>
+      <div class="lockup">
+        <svg class="mark" width="56" height="56" aria-hidden="true"><use href="#mark-c"></use></svg>
+        <div>
+          <div class="wordmark">Ageless</div>
+          <div class="locale">Ottawa and Toronto</div>
+        </div>
+      </div>
+    </div>
+
+    <p class="rationale">
+      A solid disc with the house cut out of it and one warm window. Solid marks
+      read as seals, and seals read as permanence and accreditation. This is the
+      most authoritative of the four and the most visible from across a room,
+      which matters on a van door, a business card, or a sticker left inside a
+      client's electrical panel.
+    </p>
+
+    <ul class="tests">
+      <li class="test">
+        <div class="test-stage"><svg class="mark" width="32" height="32" aria-hidden="true"><use href="#mark-c"></use></svg></div>
+        <div class="test-cap">32 px</div>
+      </li>
+      <li class="test">
+        <div class="test-stage"><svg class="mark" width="24" height="24" aria-hidden="true"><use href="#mark-c"></use></svg></div>
+        <div class="test-cap">24 px favicon</div>
+      </li>
+      <li class="test">
+        <div class="test-stage reversed"><svg class="mark" width="44" height="44" aria-hidden="true"><use href="#mark-c"></use></svg></div>
+        <div class="test-cap">Reversed</div>
+      </li>
+      <li class="test">
+        <div class="test-stage mono"><svg class="mark" width="44" height="44" aria-hidden="true"><use href="#mark-c"></use></svg></div>
+        <div class="test-cap">One colour</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ============================ D ============================= -->
+  <section class="concept">
+    <div class="concept-head">
+      <span class="letter" aria-hidden="true">D</span>
+      <h2>The Wordmark</h2>
+    </div>
+
+    <div class="stage">
+      <div>
+        <div class="wordmark foundation" style="font-size:3.5rem">Ageless<span class="dot">.</span></div>
+        <div class="locale" style="margin-top:0.6rem">Ottawa and Toronto</div>
+      </div>
+      <div class="lockup">
+        <div>
+          <div class="wordmark foundation">Ageless<span class="dot">.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="rationale">
+      No icon at all. The name set in the same serif the website uses, resting on
+      a clay line, with the full stop doing the only decorative work. The plainest
+      option and the hardest to get wrong. It never dates, and it leaves you free
+      to add a symbol later, once you know what customers actually call you.
+      The honest limitation: a wordmark has no icon, so a favicon and an app tile
+      still need the A on its own, shown below.
+    </p>
+
+    <ul class="tests">
+      <li class="test">
+        <div class="test-stage"><svg class="mark" width="32" height="32" aria-hidden="true"><use href="#mark-d"></use></svg></div>
+        <div class="test-cap">32 px, A only</div>
+      </li>
+      <li class="test">
+        <div class="test-stage"><svg class="mark" width="24" height="24" aria-hidden="true"><use href="#mark-d"></use></svg></div>
+        <div class="test-cap">24 px favicon</div>
+      </li>
+      <li class="test">
+        <div class="test-stage reversed"><span class="mini-word">Ageless<span class="dot">.</span></span></div>
+        <div class="test-cap">Reversed</div>
+      </li>
+      <li class="test">
+        <div class="test-stage mono"><span class="mini-word">Ageless<span class="dot">.</span></span></div>
+        <div class="test-cap">One colour</div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ======================= RECOMMENDATION ===================== -->
+  <section class="verdict">
+    <p class="label">My recommendation</p>
+    <h2>Take <span class="pick">B</span>, and keep C in reserve</h2>
+
+    <p>
+      I built the same tests for all four and then read the results instead of my
+      own preference. Here is what they actually show.
+    </p>
+    <ul>
+      <li>
+        <strong>C is the most legible at 24 pixels.</strong> A solid shape always
+        wins that test. Check the favicon row on each.
+      </li>
+      <li>
+        <strong>B is close behind</strong> and keeps its shape, because it is only
+        three strokes and a dot.
+      </li>
+      <li>
+        <strong>A is the weakest small.</strong> The ring and the roof close up on
+        each other and it becomes a blob. It is the best looking at full size and
+        I would still not choose it.
+      </li>
+    </ul>
+    <p>
+      So why B rather than C, when C tests better? Because C is the most generic
+      idea of the four. A house inside a circle is what half the home services
+      companies in Ottawa already use. B carries one specific idea, the light left
+      on, and it is also the letter A, so it works as a monogram on an app icon, a
+      lapel pin, or a return address label. Legibility is a floor to clear, not a
+      prize to win, and B clears it comfortably.
+    </p>
+    <p>
+      C is worth keeping for physical things, where a solid shape survives vinyl
+      cutting, embroidery, and being read from across a parking lot. Plenty of
+      small service businesses run a line mark online and a solid seal on the van.
+      That is a decision for later, not now.
+    </p>
+      All four are drawn as SVG, which means they are a few lines of text rather
+      than an image file. They stay sharp at any size, they cost nothing to load,
+      and I can recolour or resize any of them in seconds when you change your mind.
+    </p>
+  </section>
+
+</div>

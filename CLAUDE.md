@@ -78,9 +78,11 @@ This is not a checklist item. It is the product personality.
 ## Facts you may use
 
 - Business name: Ageless
-- Location: Ottawa, Ontario
+- Founder: Amin Osman
+- Service area: Ottawa and Toronto, Ontario
 - Phone: 437-457-5307
-- Founder background: nursing, with experience in in-home care and crisis intervention
+- Founder background: a BScN, with experience in in-home care and crisis intervention, focused on older adults
+- There is no founder photo. The founder section uses his name only.
 
 ## Facts you must ask me about before using
 

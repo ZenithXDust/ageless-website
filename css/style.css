@@ -1,0 +1,679 @@
+/* ==========================================================================
+   AGELESS
+   One stylesheet, shared by every page.
+
+   How to read this file:
+   It goes in order from the most general to the most specific. Tokens first
+   (the colours and sizes everything else refers to), then the base elements,
+   then the header and footer that repeat on every page, then the individual
+   pieces like cards and the booking grid.
+
+   A note on units, because it matters more here than on most sites:
+   sizes are written in "rem". One rem is whatever the visitor's browser base
+   text size is set to, normally 16 pixels. Someone who has turned their
+   browser text up to "large" changes that number, and everything in rem grows
+   with them. Sizes written in px ignore that setting entirely. For an audience
+   that includes people in their eighties, that difference is the whole ball
+   game, so almost nothing here is in px.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. TOKENS
+   Every colour below was measured against the WCAG contrast formula, not
+   eyeballed. The number in each comment is the contrast ratio against the
+   page background. The project standard is 7:1 for body text, which is the
+   AAA level, one step above what most sites aim for.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Grounds. Warm paper rather than white is the single biggest reason this
+     site does not read as a hospital. */
+  --paper:          #FAF6F0;
+  --surface:        #FFFFFF;
+
+  /* Text */
+  --ink:            #262320;   /* 14.5:1 on paper. Body text and headings. */
+  --ink-muted:      #55504A;   /*  7.4:1 on paper. Secondary text only.    */
+  --ink-on-dark:    #FAF6F0;   /*  8.1:1 on the deep green.                */
+
+  /* Brand */
+  --green:          #1E5442;   /*  8.1:1 on paper. Buttons, links.         */
+  --green-dark:     #163F32;   /* Hover and active states.                 */
+  --clay:           #7E3D1E;   /*  7.6:1 on paper. Accents, the logo dot.  */
+
+  /* Lines. Two of them, and the difference is not decorative.
+     --line is a hairline that carries no meaning, so it has no contrast
+     requirement. --border-control outlines form fields, which a person has to
+     be able to SEE to use, so it has to clear 3:1. It measures 4.6:1. */
+  --line:           #E2DACE;
+  --border-control: #7A6E5F;
+
+  /* Focus ring. 7.2:1, so it is visible to someone who navigates by keyboard
+     and does not see the mouse cursor at all. */
+  --focus:          #8A3B12;
+
+  /* The three booking types. Colour is never the only signal: each one also
+     carries its own icon and its own written label, because someone who does
+     not distinguish these hues still has to be able to book an appointment. */
+  --assessment:     #1E5442;   /* deep green  */
+  --installation:   #7E3D1E;   /* clay        */
+  --support:        #2F4858;   /* deep slate  */
+
+  /* Type. No web fonts. Georgia ships with effectively every device, which
+     means no download, no third-party request, and no page that renders in
+     the wrong typeface for a second while a font loads. */
+  --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+           "Helvetica Neue", Arial, sans-serif;
+
+  /* Spacing. One scale, 8 pixels apart, so nothing is ever an arbitrary
+     number picked to make one thing look right. */
+  --s1: 0.5rem;    /*  8px */
+  --s2: 1rem;      /* 16px */
+  --s3: 1.5rem;    /* 24px */
+  --s4: 2rem;      /* 32px */
+  --s5: 3rem;      /* 48px */
+  --s6: 4rem;      /* 64px */
+  --s7: 6rem;      /* 96px */
+
+  /* Widths. --measure caps a column of prose at roughly 65 characters, which
+     is where long lines start causing people to lose their place. */
+  --measure: 34rem;
+  --shell:   72rem;
+
+  --radius: 6px;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. BASE
+   -------------------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  font-size: 100%;              /* Respect the visitor's own browser setting */
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;     /* Stops the sticky header covering anchors  */
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.25rem;           /* 20px, the top of the project's range */
+  line-height: 1.65;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+  text-wrap: balance;           /* Stops one lonely word on the last line */
+  margin: 0 0 var(--s3);
+}
+h1 { font-size: 2.125rem; line-height: 1.15; }   /* 34px on a phone */
+h2 { font-size: 1.75rem; }                       /* 28px */
+h3 { font-size: 1.375rem; }                      /* 22px */
+h4 { font-size: 1.25rem; }
+
+@media (min-width: 48rem) {
+  h1 { font-size: 2.75rem; }                     /* 44px on a laptop */
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+}
+
+p, li { max-width: var(--measure); }
+p { margin: 0 0 var(--s3); }
+
+/* Links in running text are always underlined. Colour on its own is not
+   allowed to be the only thing that marks a link, because a person who does
+   not distinguish green from black would otherwise never find it. */
+a { color: var(--green); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a:hover { color: var(--green-dark); }
+
+/* The focus ring. Never remove this. It is how a keyboard user knows where
+   they are on the page. :focus-visible shows it for keyboard navigation and
+   keeps it out of the way of mouse clicks. */
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+img, svg { max-width: 100%; height: auto; }
+
+/* Anything wide scrolls inside its own box rather than making the whole page
+   slide sideways on a phone. */
+.scroll-x { overflow-x: auto; }
+
+/* Visible only to screen readers. Used for headings that would be redundant
+   on screen but that a screen reader user needs in order to navigate. */
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* The skip link. First thing in the tab order on every page. It is hidden
+   until focused, then drops into view, so a keyboard user can jump straight
+   past the navigation instead of tabbing through it on every single page. */
+.skip-link {
+  position: absolute; top: -100%; left: var(--s2); z-index: 100;
+  background: var(--green); color: var(--ink-on-dark);
+  padding: var(--s2) var(--s3);
+  border-radius: 0 0 var(--radius) var(--radius);
+  text-decoration: none; font-weight: 600;
+}
+.skip-link:focus { top: 0; color: var(--ink-on-dark); }
+
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT
+   -------------------------------------------------------------------------- */
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding-left: var(--s3);
+  padding-right: var(--s3);
+}
+
+section { padding: var(--s5) 0; }
+@media (min-width: 48rem) { section { padding: var(--s7) 0; } }
+
+.section-alt { background: var(--surface); border-block: 1px solid var(--line); }
+
+.lede { font-size: 1.375rem; color: var(--ink-muted); max-width: var(--measure); }
+
+
+/* --------------------------------------------------------------------------
+   4. BUTTONS
+   Minimum 48 by 48 pixels, which is the smallest target an adult finger hits
+   reliably. Written as 3rem so it grows if the visitor enlarges their text.
+   -------------------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s1);
+  min-height: 3rem;
+  min-width: 3rem;
+  padding: 0.75rem var(--s3);
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn-primary { background: var(--green); color: var(--ink-on-dark); }
+.btn-primary:hover { background: var(--green-dark); color: var(--ink-on-dark); }
+.btn-secondary {
+  background: transparent; color: var(--green); border-color: var(--green);
+}
+.btn-secondary:hover { background: var(--green); color: var(--ink-on-dark); }
+
+/* On the dark green the focus ring has to change colour or it disappears. */
+.btn-primary:focus-visible { outline-color: var(--paper); }
+
+.btn-lg { font-size: 1.375rem; padding: var(--s2) var(--s4); min-height: 3.5rem; }
+
+.btn-row {
+  display: flex; flex-wrap: wrap;
+  gap: var(--s2);                /* Keeps tap targets from touching */
+  align-items: center;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. SITE HEADER
+   The phone number has to be reachable on every page without scrolling, so the
+   header sticks to the top. The catch is that a sticky bar eats vertical space,
+   and on a short screen or at high zoom it can swallow the page. The media
+   query at the bottom only makes it sticky when the window is tall enough to
+   afford it, which is a height-based query rather than the usual width one.
+   -------------------------------------------------------------------------- */
+.site-header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  z-index: 50;
+}
+@media (min-height: 34rem) {
+  .site-header { position: sticky; top: 0; }
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  min-height: 4rem;
+  padding-block: var(--s1);
+}
+@media (min-width: 26rem) { .header-inner { gap: var(--s2); } }
+
+.brand {
+  display: flex; align-items: center; gap: 0.6rem;
+  text-decoration: none; color: var(--green);
+  margin-right: auto;
+  padding: var(--s1) 0;
+}
+.brand svg { display: block; width: 2rem; height: 2rem; flex: none; }
+@media (min-width: 26rem) { .brand svg { width: 2.25rem; height: 2.25rem; } }
+/* The wordmark steps down a size on the narrowest phones so that the brand,
+   the phone number and the menu button all fit on one row. A header that wraps
+   onto two rows works, but it steals a chunk of a small screen for nothing. */
+.brand-name {
+  font-family: var(--serif); font-size: 1.3125rem; line-height: 1; color: var(--green);
+}
+@media (min-width: 26rem) { .brand-name { font-size: 1.5rem; } }
+
+/* The call button. Always visible, never inside the menu, always a tel: link
+   so that tapping it on a phone actually dials. */
+.call-btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  min-height: 3rem; padding: 0.5rem var(--s2);
+  background: var(--green); color: var(--ink-on-dark);
+  border-radius: var(--radius); text-decoration: none;
+  font-weight: 600; font-size: 1.0625rem; white-space: nowrap;
+}
+.call-btn:hover { background: var(--green-dark); color: var(--ink-on-dark); }
+.call-btn:focus-visible { outline-color: var(--focus); }
+.call-btn .call-label { display: none; }
+@media (min-width: 30rem) { .call-btn .call-label { display: inline; } }
+
+.nav-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 3rem; min-height: 3rem;
+  background: transparent; border: 2px solid var(--border-control);
+  border-radius: var(--radius); color: var(--ink);
+  font-size: 1rem; font-weight: 600; cursor: pointer;
+  font-family: var(--sans);
+}
+@media (min-width: 62rem) { .nav-toggle { display: none; } }
+
+.site-nav ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column;
+}
+.site-nav a {
+  display: flex; align-items: center;
+  min-height: 3rem;                /* 48px tap target on every menu row */
+  padding: var(--s1) 0;
+  color: var(--ink); text-decoration: none; font-weight: 600;
+}
+.site-nav a:hover { color: var(--green); text-decoration: underline; }
+
+/* The current page is marked with a written label for screen readers plus a
+   visible left bar. Not colour alone. */
+.site-nav a[aria-current="page"] {
+  color: var(--green);
+  box-shadow: inset 3px 0 0 var(--clay);
+  padding-left: var(--s2);
+}
+
+/* Mobile: the menu is hidden until the button opens it. The phone number is
+   deliberately outside this panel so it never gets hidden behind a menu. */
+@media (max-width: 61.99rem) {
+  .site-nav {
+    display: none;
+    width: 100%;
+    border-top: 1px solid var(--line);
+    padding-bottom: var(--s2);
+  }
+  .site-nav.is-open { display: block; }
+  .header-inner { flex-wrap: wrap; }
+}
+/* Desktop: the header becomes two rows. Brand and phone on top, navigation
+   underneath on its own full-width line. Seven links will not fit beside a
+   wordmark and a phone number on one row, and squeezing them would mean
+   shrinking the text, which is the one thing this site will not do. */
+@media (min-width: 62rem) {
+  .site-nav {
+    flex-basis: 100%;
+    border-top: 1px solid var(--line);
+    margin-top: var(--s1);
+  }
+  .site-nav ul { flex-direction: row; gap: var(--s4); align-items: center; }
+  .site-nav a { min-height: 2.75rem; font-size: 1.125rem; }
+  .site-nav a[aria-current="page"] {
+    box-shadow: inset 0 -3px 0 var(--clay); padding-left: 0;
+  }
+  .header-inner { flex-wrap: wrap; }
+}
+
+
+/* --------------------------------------------------------------------------
+   6. HERO
+   -------------------------------------------------------------------------- */
+.hero { padding: var(--s5) 0 var(--s6); }
+.hero h1 { margin-bottom: var(--s3); }
+.hero .lede { margin-bottom: var(--s4); }
+.hero-phone { margin-top: var(--s3); font-size: 1.125rem; color: var(--ink-muted); }
+.hero-phone a { font-weight: 600; }
+
+
+/* --------------------------------------------------------------------------
+   7. CARDS AND GRIDS
+   -------------------------------------------------------------------------- */
+.grid {
+  display: grid;
+  gap: var(--s3);
+  grid-template-columns: 1fr;
+  margin: 0; padding: 0; list-style: none;
+}
+@media (min-width: 40rem) { .grid-2, .grid-4 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 52rem) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 64rem) { .grid-4 { grid-template-columns: repeat(4, 1fr); } }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s3);
+}
+.card h3 { margin-bottom: var(--s1); }
+.card p:last-child { margin-bottom: 0; }
+.card p, .card li { max-width: none; }
+
+/* A card that is entirely a link */
+a.card { display: block; text-decoration: none; color: var(--ink); }
+a.card:hover { border-color: var(--green); }
+a.card h3 { color: var(--green); text-decoration: underline; }
+
+/* The three numbered steps. A real ordered list, so the order is in the
+   markup and not just in the way it looks. */
+.steps { counter-reset: step; list-style: none; padding: 0; }
+.steps > li {
+  counter-increment: step;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s3);
+  max-width: none;
+}
+.steps > li::before {
+  content: "Step " counter(step);
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.9375rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--clay);
+  margin-bottom: var(--s1);
+}
+
+
+/* --------------------------------------------------------------------------
+   8. PROSE
+   Used on the article and policy pages.
+   -------------------------------------------------------------------------- */
+.prose { max-width: var(--measure); }
+.prose h2 { margin-top: var(--s5); }
+.prose h3 { margin-top: var(--s4); }
+.prose ul, .prose ol { padding-left: var(--s3); }
+.prose li { margin-bottom: var(--s1); }
+
+.callout {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 6px solid var(--clay);
+  border-radius: var(--radius);
+  padding: var(--s3);
+  margin: var(--s4) 0;
+  max-width: var(--measure);
+}
+.callout p:last-child { margin-bottom: 0; }
+.callout strong { display: block; margin-bottom: var(--s1); }
+
+
+/* --------------------------------------------------------------------------
+   9. FORMS
+   -------------------------------------------------------------------------- */
+.field { margin-bottom: var(--s3); max-width: var(--measure); }
+.field label { display: block; font-weight: 600; margin-bottom: var(--s1); }
+.field .hint { display: block; font-size: 1.0625rem; color: var(--ink-muted); margin-bottom: var(--s1); }
+
+input[type="text"], input[type="tel"], input[type="email"], textarea, select {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.625rem var(--s2);
+  font-family: var(--sans);
+  font-size: 1.25rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 2px solid var(--border-control);
+  border-radius: var(--radius);
+}
+textarea { min-height: 8rem; line-height: 1.6; resize: vertical; }
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 3px solid var(--focus); outline-offset: 2px; border-color: var(--ink);
+}
+
+
+/* --------------------------------------------------------------------------
+   10. BOOKING
+   Three service types, then a day, then a time. Each service carries a colour,
+   an icon and a written label. The colour is the last of those three, never
+   the only one, which is what keeps this usable for someone who does not
+   distinguish the hues.
+   -------------------------------------------------------------------------- */
+.booking-step { margin-bottom: var(--s5); }
+.step-heading {
+  display: flex; align-items: baseline; gap: var(--s2);
+  border-bottom: 2px solid var(--line);
+  padding-bottom: var(--s1); margin-bottom: var(--s3);
+}
+.step-heading h2 { margin: 0; }
+.step-num {
+  font-family: var(--sans); font-size: 0.9375rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--clay);
+}
+
+/* Service chooser. Real radio buttons underneath, so arrow keys work and a
+   screen reader announces the group properly. The radio itself is hidden from
+   sight but not from assistive technology. */
+.service-list { display: grid; gap: var(--s2); grid-template-columns: 1fr; padding: 0; margin: 0; border: 0; }
+@media (min-width: 46rem) { .service-list { grid-template-columns: repeat(3, 1fr); } }
+
+.service-option { position: relative; display: block; }
+.service-option input {
+  position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer;
+}
+.service-card {
+  display: flex; flex-direction: column; gap: var(--s1);
+  height: 100%;
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-left: 8px solid var(--service, var(--green));
+  border-radius: var(--radius);
+  padding: var(--s3);
+  cursor: pointer;
+}
+.service-icon {
+  display: flex; align-items: center; gap: 0.6rem;
+  color: var(--service, var(--green));
+  font-weight: 700; font-size: 1.125rem;
+}
+.service-icon svg { width: 1.75rem; height: 1.75rem; flex: none; }
+.service-card .service-desc { font-size: 1.0625rem; color: var(--ink-muted); margin: 0; max-width: none; }
+
+/* Chosen state. Three separate signals: a thicker ring, a filled tick, and the
+   word "Selected". Not colour on its own. */
+.service-option input:checked + .service-card {
+  border-color: var(--service, var(--green));
+  box-shadow: inset 0 0 0 2px var(--service, var(--green));
+}
+.service-option input:focus-visible + .service-card {
+  outline: 3px solid var(--focus); outline-offset: 3px;
+}
+.service-check {
+  display: none; align-items: center; gap: 0.4rem;
+  font-size: 1rem; font-weight: 700; color: var(--service, var(--green));
+}
+.service-option input:checked + .service-card .service-check { display: flex; }
+
+.svc-assessment   { --service: var(--assessment); }
+.svc-installation { --service: var(--installation); }
+.svc-support      { --service: var(--support); }
+
+/* Day chooser: seven days, horizontally scrollable on a phone. */
+.day-list {
+  display: flex; gap: var(--s2); padding: 0 0 var(--s1); margin: 0;
+  list-style: none; overflow-x: auto;
+}
+.day-list li { max-width: none; flex: none; }
+.day-btn {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  min-width: 4.5rem; min-height: 4.5rem; gap: 0.15rem;
+  background: var(--surface); color: var(--ink);
+  border: 2px solid var(--border-control); border-radius: var(--radius);
+  font-family: var(--sans); cursor: pointer; padding: var(--s1);
+}
+.day-btn .dow { font-size: 0.9375rem; font-weight: 600; }
+.day-btn .dom { font-size: 1.375rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+.day-btn .mon { font-size: 0.8125rem; color: var(--ink-muted); }
+.day-btn[aria-pressed="true"] {
+  background: var(--green); color: var(--ink-on-dark); border-color: var(--green);
+}
+.day-btn[aria-pressed="true"] .mon { color: var(--ink-on-dark); }
+
+/* Time slots: 9am to 9pm. */
+.time-list {
+  display: grid; gap: var(--s2); padding: 0; margin: 0; list-style: none;
+  grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+}
+.time-list li { max-width: none; }
+.time-btn {
+  width: 100%; min-height: 3rem;
+  background: var(--surface); color: var(--ink);
+  border: 2px solid var(--border-control); border-radius: var(--radius);
+  font-family: var(--sans); font-size: 1.125rem; font-weight: 600;
+  font-variant-numeric: tabular-nums; cursor: pointer;
+}
+.time-btn[aria-pressed="true"] {
+  background: var(--green); color: var(--ink-on-dark); border-color: var(--green);
+}
+.time-btn[aria-pressed="true"]::after { content: " ✓"; }
+
+/* The summary panel. Updated by JavaScript as choices are made. */
+.summary {
+  background: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--s3);
+  max-width: var(--measure);
+}
+.summary dl { margin: 0 0 var(--s3); }
+.summary dt {
+  font-size: 0.9375rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--ink-muted); margin-top: var(--s2);
+}
+.summary dd { margin: 0.15rem 0 0; font-size: 1.25rem; font-weight: 600; }
+.summary dd:first-of-type { margin-top: 0; }
+.summary .incomplete { color: var(--ink-muted); font-weight: 400; font-style: italic; }
+
+
+/* --------------------------------------------------------------------------
+   11. FAQ
+   Built on <details>, which opens and closes with no JavaScript at all and is
+   keyboard operable for free.
+   -------------------------------------------------------------------------- */
+.faq { max-width: var(--measure); }
+.faq details {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface); margin-bottom: var(--s2);
+}
+.faq summary {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--s2);
+  min-height: 3rem; padding: var(--s2) var(--s3);
+  font-family: var(--serif); font-size: 1.25rem;
+  cursor: pointer; list-style: none;
+}
+.faq summary::-webkit-details-marker { display: none; }
+/* The plus and minus is a text character, so the open state is readable
+   without relying on a colour change or an image. */
+.faq summary::after { content: "+"; font-size: 1.75rem; color: var(--clay); flex: none; }
+.faq details[open] summary::after { content: "\2212"; }
+.faq summary:focus-visible { outline: 3px solid var(--focus); outline-offset: -3px; }
+.faq .faq-body { padding: 0 var(--s3) var(--s3); }
+.faq .faq-body p:last-child { margin-bottom: 0; }
+
+
+/* --------------------------------------------------------------------------
+   12. FOOTER
+   -------------------------------------------------------------------------- */
+.site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  padding: var(--s6) 0 var(--s4);
+  margin-top: var(--s6);
+}
+.footer-grid {
+  display: grid; gap: var(--s5);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 40rem) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 62rem) { .footer-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.site-footer h2 {
+  font-family: var(--sans); font-size: 0.9375rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-muted); margin-bottom: var(--s2);
+}
+.site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer li { margin-bottom: 0.25rem; max-width: none; }
+.site-footer a {
+  display: inline-flex; align-items: center;
+  min-height: 2.75rem; color: var(--ink);
+}
+.site-footer a:hover { color: var(--green); }
+.site-footer p { font-size: 1.0625rem; color: var(--ink-muted); max-width: 22rem; }
+
+.footer-brand { display: flex; align-items: center; gap: 0.6rem; margin-bottom: var(--s2); }
+.footer-brand svg { width: 2rem; height: 2rem; }
+.footer-brand span { font-family: var(--serif); font-size: 1.375rem; color: var(--green); }
+
+.footer-bottom {
+  border-top: 1px solid var(--line);
+  margin-top: var(--s5); padding-top: var(--s3);
+  font-size: 1rem; color: var(--ink-muted);
+}
+.footer-bottom p { font-size: 1rem; max-width: none; margin-bottom: 0; }
+
+
+/* --------------------------------------------------------------------------
+   13. MOTION
+   Nothing on this site moves on its own. The only transitions are on hover and
+   focus, both of which are things the visitor did on purpose. This block turns
+   even those off for anyone whose device asks for reduced motion, which is a
+   real setting that people with vestibular conditions rely on.
+   -------------------------------------------------------------------------- */
+.btn, .call-btn, .card, .day-btn, .time-btn, .service-card, a {
+  transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   14. PRINT
+   People in this audience print things and bring them to family meetings.
+   -------------------------------------------------------------------------- */
+@media print {
+  .site-header, .site-footer, .skip-link, .btn, .nav-toggle { display: none; }
+  body { background: #fff; color: #000; font-size: 12pt; }
+  a::after { content: " (" attr(href) ")"; font-size: 10pt; }
+}

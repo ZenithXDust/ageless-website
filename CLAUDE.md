@@ -68,11 +68,12 @@ This is not a checklist item. It is the product personality.
 
 ## How I want you to work with me
 
-- Make a plan before writing code. Show me the plan and wait for my approval.
-- Do one section at a time. Do not build the entire site in one pass.
+- Build the complete website in one pass. Do not stop after every section to wait for approval.
+- Ask me questions whenever an answer would make the site more accurate, more personal, or more effective at winning customers. Asking is encouraged. Stalling is not.
+- If one fact is missing, build everything around it, mark the gap clearly, and tell me what you need. Do not hold up the whole site for one answer.
 - After each change, tell me plainly what you did and why.
-- If I ask for something that is a bad idea, say so and explain why.
-- If you need information about the business that is not in this file, ask me. Do not invent it.
+- If I ask for something that is a bad idea, say so and explain why. If I confirm, do it my way.
+- Never invent a fact about the business. Ask me instead.
 - Explain any technique I might not know. Assume I am new to this and want to learn, not just receive output.
 
 ## Facts you may use
@@ -81,13 +82,27 @@ This is not a checklist item. It is the product personality.
 - Founder: Amin Osman
 - Service area: Ottawa and Toronto, Ontario
 - Phone: 437-457-5307
-- Founder background: a BScN, with experience in in-home care and crisis intervention, focused on older adults
+- Founder background: works across healthcare and IT
+- Founder credentials: a BScN, plus CompTIA A+, Network+ and Security+
+- Founder experience: in-home care and crisis intervention, focused on older adults
 - There is no founder photo. The founder section uses his name only.
+- Technical support, remote or on site, is available 24 hours a day, 7 days a week
+- Amin runs the whole service himself today. More staff are intended but not hired. Never write "our team" or "our staff" as though they already exist.
+- Bookings are offered Monday to Sunday, 9am to 9pm Eastern time
+- The three booking types are: assessment call, in-home installation, on-site technical support
 
 ## Facts you must ask me about before using
 
-- Any professional title, registration, or licence claim
 - Pricing
 - Email address and mailing address
 - Specific product brands we resell
 - Anything about insurance, bonding, or police checks
+- Any professional title, registration, or licence claim beyond the credentials listed above
+
+## Claims that must never appear
+
+These are not "ask first." These are never.
+
+- Never call Amin a nurse, an RN, or registered. He holds a BScN and is not currently licensed, so those words must not appear anywhere on the site.
+- Never imply Ageless answers medical emergencies. Ageless is not an emergency response service. Emergency alerts route to 911 and to the family's emergency contacts. The 24/7 availability is for technical support, remote or on site, and the copy must always say so.
+- Never write invented statistics, testimonials, client names, or credentials.

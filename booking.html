@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Book a time | Ageless</title>
+  <meta name="description" content="Book an assessment call, an in-home installation, or on-site technical support. Seven days a week, 9:00 AM to 9:00 PM Eastern.">
+
+  <!-- One stylesheet shared by every page. -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+
+  <!-- Skip link: the first thing a keyboard user reaches, so they can jump
+       past the navigation instead of tabbing through it on every page. -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="shell header-inner">
+
+      <a class="brand" href="index.html">
+        <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M15 50 L32 16 L49 50" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 41 H43" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="33" r="3.2" fill="#7E3D1E"/></svg>
+        <span class="brand-name">Ageless</span>
+      </a>
+
+      <!-- The phone number. Visible on every page without scrolling, and a
+           tel: link so that tapping it on a phone actually places the call. -->
+      <a class="call-btn" href="tel:+14374575307">
+        <span class="call-label">Call</span>
+        <span>437-457-5307</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false"
+              aria-controls="site-nav">Menu</button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+        <li><a href="how-it-works.html">How It Works</a></li>
+        <li><a href="solutions.html">Solutions</a></li>
+        <li><a href="booking.html" aria-current="page">Booking</a></li>
+        <li><a href="pricing.html">Pricing</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="shell">
+        <h1>Book a time</h1>
+        <p class="lede">
+          Three kinds of appointment, seven days a week, 9:00 AM to 9:00 PM
+          Eastern. Choose what you need and when suits you.
+        </p>
+      </div>
+    </section>
+
+    <section class="section-alt">
+      <div class="shell">
+        <form data-booking>
+
+          <!-- STEP 1: which service. Real radio buttons underneath the cards,
+               so the arrow keys work and a screen reader announces the group
+               correctly without any extra help. -->
+          <div class="booking-step">
+            <div class="step-heading">
+              <span class="step-num">Step 1</span>
+              <h2>What do you need?</h2>
+            </div>
+
+            <fieldset class="service-list">
+              <legend class="sr-only">Choose the type of appointment</legend>
+
+              <label class="service-option svc-assessment">
+                <input type="radio" name="service" value="assessment"
+                       data-label="Assessment call">
+                <span class="service-card">
+                  <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h4l2 5-3 2a12 12 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A17 17 0 0 1 4 5a2 2 0 0 1 2-2z"/></svg> Assessment call</span>
+                  <span class="service-desc">
+                    A phone call to talk through the situation and arrange the
+                    in-home assessment. Start here if you are not sure.
+                  </span>
+                  <span class="service-check">&#10003; Selected</span>
+                </span>
+              </label>
+
+              <label class="service-option svc-installation">
+                <input type="radio" name="service" value="installation"
+                       data-label="In-home installation">
+                <span class="service-card">
+                  <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M9 9V7a3 3 0 0 1 6 0v2"/><path d="M3 14h18"/></svg> In-home installation</span>
+                  <span class="service-desc">
+                    Fitting the equipment agreed in your report, setting it up
+                    and showing everybody how it works.
+                  </span>
+                  <span class="service-check">&#10003; Selected</span>
+                </span>
+              </label>
+
+              <label class="service-option svc-support">
+                <input type="radio" name="service" value="support"
+                       data-label="On-site technical support">
+                <span class="service-card">
+                  <span class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 14v-2a8 8 0 0 1 16 0v2"/><rect x="2" y="13" width="4.5" height="7" rx="2"/><rect x="17.5" y="13" width="4.5" height="7" rx="2"/></svg> On-site technical support</span>
+                  <span class="service-desc">
+                    Something has stopped working and needs somebody there in
+                    person. Remote support is available any hour by phone.
+                  </span>
+                  <span class="service-check">&#10003; Selected</span>
+                </span>
+              </label>
+            </fieldset>
+          </div>
+
+          <!-- STEP 2: the day -->
+          <div class="booking-step">
+            <div class="step-heading">
+              <span class="step-num">Step 2</span>
+              <h2>Which day?</h2>
+            </div>
+            <p>Every day of the week, including weekends.</p>
+            <ul class="day-list scroll-x" data-day-list></ul>
+          </div>
+
+          <!-- STEP 3: the time -->
+          <div class="booking-step">
+            <div class="step-heading">
+              <span class="step-num">Step 3</span>
+              <h2>What time?</h2>
+            </div>
+            <p>All times are Eastern.</p>
+            <ul class="time-list" data-time-list></ul>
+          </div>
+
+          <!-- The summary. aria-live means a screen reader reads each change
+               out as it happens, rather than leaving the person to go looking
+               for what moved on the page. -->
+          <div class="booking-step">
+            <div class="step-heading">
+              <span class="step-num">Step 4</span>
+              <h2>Confirm by phone</h2>
+            </div>
+
+            <div class="summary" data-summary aria-live="polite" role="status"></div>
+
+            <p class="btn-row" style="margin-top:1.5rem">
+              <a class="btn btn-primary btn-lg" href="tel:+14374575307" data-call-link>Call 437-457-5307</a>
+              <button class="btn btn-secondary" type="button" data-copy>Copy these details</button>
+            </p>
+            <p data-copy-note aria-live="polite"></p>
+
+            <div class="callout">
+              <strong>Choosing a time here does not book it yet.</strong>
+              <p>
+                Ageless is one person, so appointments are confirmed by a real
+                conversation rather than by a machine. Picking a time above
+                means the call takes about thirty seconds instead of five
+                minutes. If you would rather skip all of this and just talk,
+                call 437-457-5307 and we will sort it out together.
+              </p>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-brand">
+            <svg viewBox="0 0 64 64" aria-hidden="true" focusable="false"><path d="M15 50 L32 16 L49 50" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 41 H43" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/><circle cx="32" cy="33" r="3.2" fill="#7E3D1E"/></svg>
+            <span>Ageless</span>
+          </div>
+          <p>Helping older adults stay in their own homes, in Ottawa and Toronto.</p>
+          <p><a href="tel:+14374575307">437-457-5307</a></p>
+        </div>
+
+        <div>
+          <h2>Pages</h2>
+          <ul>
+            <li><a href="how-it-works.html">How It Works</a></li>
+            <li><a href="solutions.html">Solutions</a></li>
+            <li><a href="booking.html">Booking</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Reading</h2>
+          <ul>
+            <li><a href="resources-stove-left-on.html">What to do when a parent leaves the stove on</a></li>
+            <li><a href="resources-medical-alert-questions.html">Five questions to ask before buying a medical alert button</a></li>
+            <li><a href="resources-pill-dispensers.html">Automatic pill dispensers: what to know before you buy</a></li>
+            <li><a href="resources-talking-to-a-parent.html">How to talk to a parent about safety without making them defensive</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Details</h2>
+          <ul>
+            <li><a href="faq.html">Questions and answers</a></li>
+            <li><a href="privacy.html">Privacy policy</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Ageless. Serving Ottawa and Toronto, Ontario.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/nav.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>

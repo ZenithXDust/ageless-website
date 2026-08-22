@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="11 12 42 42" width="42" height="42" role="img" aria-labelledby="t">
+  <title id="t">Ageless</title>
+  <!-- Same mark, cropped tighter so it stays readable at 16 and 24 pixels. -->
+  <path d="M15 50 L32 16 L49 50" fill="none" stroke="#1E5442" stroke-width="5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M21 41 H43" fill="none" stroke="#1E5442" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="32" cy="33" r="3.2" fill="#7E3D1E"/>
+</svg>

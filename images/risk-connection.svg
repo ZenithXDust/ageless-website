@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="t">
+  <title id="t">A tablet set up for video calling, connected and working</title>
+  <g fill="none" stroke="#1E5442" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="30" y="30" width="76" height="60" rx="6" fill="#FFFFFF"/>
+    <rect x="42" y="42" width="36" height="36" rx="4" fill="#FAF6F0"/>
+    <path d="M30 90 h76"/>
+  </g>
+  <circle cx="60" cy="55" r="7" fill="#7E3D1E"/>
+  <path d="M48 74 a12 12 0 0 1 24 0" fill="none" stroke="#7E3D1E" stroke-width="3.5" stroke-linecap="round"/>
+  <g fill="none" stroke="#2F4858" stroke-width="3" stroke-linecap="round">
+    <path d="M122 50 a16 16 0 0 1 0 22"/>
+    <path d="M132 40 a30 30 0 0 1 0 42"/>
+  </g>
+</svg>

@@ -582,6 +582,58 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
 
 
 /* --------------------------------------------------------------------------
+   10b. IMAGES AND ILLUSTRATIONS
+
+   A note on alt text, because it is the part people get wrong. An image that
+   only repeats what the heading beside it already says is decorative, and gets
+   alt="" so a screen reader skips it instead of reading the same thing twice.
+   An image carrying information written nowhere else gets a real description.
+   Both are used on this site, on purpose.
+   -------------------------------------------------------------------------- */
+
+/* Hero with an illustration beside the words. It stacks on a phone, and the
+   text comes first in the markup so that on a small screen the headline is the
+   first thing seen rather than a picture to scroll past. */
+.hero-split { display: grid; gap: var(--s4); align-items: center; }
+@media (min-width: 56rem) {
+  .hero-split { grid-template-columns: 1.05fr 1fr; gap: var(--s6); }
+}
+.hero-art { margin: 0; }
+.hero-art img { display: block; width: 100%; height: auto; }
+
+/* A card with an illustration above the words. */
+.card.has-art { padding: 0; overflow: hidden; }
+.card-art {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: var(--s3) var(--s3) var(--s2);
+}
+.card-art img { display: block; width: 100%; max-width: 9rem; height: auto; }
+.card-body { padding: var(--s3); }
+.card-body > :last-child { margin-bottom: 0; }
+
+/* Solutions: the illustration sits beside the heading on a wide screen and
+   above it on a narrow one. */
+.solution-head { display: grid; gap: var(--s2); align-items: center; margin-bottom: var(--s3); }
+@media (min-width: 44rem) {
+  .solution-head { grid-template-columns: 7.5rem 1fr; gap: var(--s3); }
+}
+.solution-head img { display: block; width: 100%; max-width: 7.5rem; height: auto; }
+.solution-head h2 { margin: 0; }
+
+/* Ready for real photographs once there are some. object-fit stops a photo of
+   the wrong shape from stretching: it crops to fill the box instead. */
+.photo {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: var(--radius);
+  background: var(--line);
+}
+
+
+/* --------------------------------------------------------------------------
    11. FAQ
    Built on <details>, which opens and closes with no JavaScript at all and is
    keyboard operable for free.

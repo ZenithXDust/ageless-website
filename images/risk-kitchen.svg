@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="t">
+  <title id="t">A cooker with a monitor above it watching a lit burner</title>
+  <g fill="none" stroke="#1E5442" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="34" y="54" width="92" height="52" rx="5" fill="#FFFFFF"/>
+    <path d="M34 72 H126"/>
+    <circle cx="57" cy="63" r="6"/>
+    <rect x="60" y="84" width="40" height="14" rx="3"/>
+  </g>
+  <circle cx="103" cy="63" r="6" fill="#7E3D1E"/>
+  <g fill="none" stroke="#2F4858" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="88" y="18" width="34" height="20" rx="4" fill="#FAF6F0"/>
+    <path d="M105 38 v9"/>
+  </g>
+  <circle cx="105" cy="28" r="3.5" fill="#2F4858"/>
+</svg>

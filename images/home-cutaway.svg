@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 290" role="img" aria-labelledby="ttl">
+  <title id="ttl">A cross-section of a house showing the rooms where safety equipment is placed</title>
+  <g fill="none" stroke="#1E5442" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M58 112 L200 38 L342 112" />
+    <rect x="78" y="112" width="244" height="136" fill="#FFFFFF"/>
+    <path d="M78 180 H322"/>
+    <path d="M200 112 V248"/>
+    <path d="M30 248 H370" stroke-width="4"/>
+  </g>
+  <!-- Kitchen, upper left: a hob with one ring lit -->
+  <g fill="none" stroke="#1E5442" stroke-width="2.5" stroke-linecap="round">
+    <rect x="104" y="140" width="46" height="28" rx="3" fill="#FAF6F0"/>
+    <circle cx="117" cy="153" r="6"/>
+  </g>
+  <circle cx="137" cy="153" r="6" fill="#7E3D1E"/>
+  <!-- Living room, upper right: the lit window from the logo -->
+  <rect x="238" y="136" width="38" height="34" rx="3" fill="#7E3D1E"/>
+  <rect x="238" y="136" width="38" height="34" rx="3" fill="none" stroke="#1E5442" stroke-width="2.5"/>
+  <path d="M257 136 V170 M238 153 H276" stroke="#FAF6F0" stroke-width="2.5"/>
+  <!-- Hallway, lower left: motion sensing on the night route -->
+  <g fill="none" stroke="#2F4858" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M116 196 H140 L135 209 H121 Z" fill="#FAF6F0"/>
+    <path d="M128 215 v9 M117 214 l-6 7 M139 214 l6 7"/>
+  </g>
+  <!-- Bathroom, lower right: a wearable with a signal -->
+  <g fill="none" stroke="#1E5442" stroke-width="2.5" stroke-linecap="round">
+    <rect x="252" y="200" width="20" height="26" rx="7" fill="#FAF6F0"/>
+    <path d="M282 205 a14 14 0 0 1 0 16" />
+    <path d="M290 198 a24 24 0 0 1 0 30" />
+  </g>
+  <circle cx="262" cy="213" r="4" fill="#7E3D1E"/>
+</svg>

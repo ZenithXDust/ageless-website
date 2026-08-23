@@ -53,21 +53,32 @@
     <!-- HERO. One sentence saying what Ageless does, one supporting
          sentence, one primary action, and the phone number beside it. -->
     <section class="hero">
-      <div class="shell">
-        <h1>Your parent can stay in their own home. We help make that safe.</h1>
-        <p class="lede">
-          Ageless goes to the home, works out what actually makes it risky,
-          installs technology chosen for that specific house, and keeps it
-          working. Ottawa and Toronto.
-        </p>
-        <p class="btn-row">
-          <a class="btn btn-primary btn-lg" href="tel:+14374575307">Call 437-457-5307</a>
-          <a class="btn btn-secondary btn-lg" href="booking.html">Book a home safety assessment</a>
-        </p>
-        <p class="hero-phone">
-          Monday to Sunday, 9:00 AM to 9:00 PM Eastern. Technical support is
-          available 24 hours a day.
-        </p>
+      <div class="shell hero-split">
+        <div>
+          <h1>Your parent can stay in their own home. We help make that safe.</h1>
+          <p class="lede">
+            Ageless goes to the home, works out what actually makes it risky,
+            installs technology chosen for that specific house, and keeps it
+            working. Ottawa and Toronto.
+          </p>
+          <p class="btn-row">
+            <a class="btn btn-primary btn-lg" href="tel:+14374575307">Call 437-457-5307</a>
+            <a class="btn btn-secondary btn-lg" href="booking.html">Book a home safety assessment</a>
+          </p>
+          <p class="hero-phone">
+            Monday to Sunday, 9:00 AM to 9:00 PM Eastern. Technical support is
+            available 24 hours a day.
+          </p>
+        </div>
+
+        <!-- This illustration carries information the words do not, so it gets
+             a real description rather than an empty alt. -->
+        <figure class="hero-art">
+          <img src="images/home-cutaway.svg" width="400" height="290"
+               alt="A cutaway of a house showing four rooms: a cooker monitor in
+                    the kitchen, a lit window in the living room, a light on the
+                    hallway route, and a wearable alert button by the bathroom.">
+        </figure>
       </div>
     </section>
 
@@ -142,21 +153,49 @@
       <div class="shell">
         <h2>What we work on</h2>
         <ul class="grid grid-4">
-          <li><a class="card" href="solutions.html#kitchen">
-            <h3>Kitchen and fire</h3>
-            <p>Cooking that gets forgotten, and smoke that nobody hears.</p>
+          <li><a class="card has-art" href="solutions.html#kitchen">
+            <!-- alt is empty because the heading underneath already says this.
+                 A screen reader should not read the same thing twice. -->
+            <div class="card-art">
+              <img src="images/risk-kitchen.svg" width="160" height="120" alt="">
+            </div>
+            <div class="card-body">
+              <h3>Kitchen and fire</h3>
+              <p>Cooking that gets forgotten, and smoke that nobody hears.</p>
+            </div>
           </a></li>
-          <li><a class="card" href="solutions.html#medication">
-            <h3>Medication</h3>
-            <p>Right pills, right day, without a phone call to check.</p>
+          <li><a class="card has-art" href="solutions.html#medication">
+            <!-- alt is empty because the heading underneath already says this.
+                 A screen reader should not read the same thing twice. -->
+            <div class="card-art">
+              <img src="images/risk-medication.svg" width="160" height="120" alt="">
+            </div>
+            <div class="card-body">
+              <h3>Medication</h3>
+              <p>Right pills, right day, without a phone call to check.</p>
+            </div>
           </a></li>
-          <li><a class="card" href="solutions.html#falls">
-            <h3>Falls and getting help</h3>
-            <p>Making sure a fall is found in minutes, not in the morning.</p>
+          <li><a class="card has-art" href="solutions.html#falls">
+            <!-- alt is empty because the heading underneath already says this.
+                 A screen reader should not read the same thing twice. -->
+            <div class="card-art">
+              <img src="images/risk-falls.svg" width="160" height="120" alt="">
+            </div>
+            <div class="card-body">
+              <h3>Falls and getting help</h3>
+              <p>Making sure a fall is found in minutes, not in the morning.</p>
+            </div>
           </a></li>
-          <li><a class="card" href="solutions.html#activity">
-            <h3>Daily check-ins</h3>
-            <p>Knowing the day went normally, without watching anyone.</p>
+          <li><a class="card has-art" href="solutions.html#activity">
+            <!-- alt is empty because the heading underneath already says this.
+                 A screen reader should not read the same thing twice. -->
+            <div class="card-art">
+              <img src="images/risk-activity.svg" width="160" height="120" alt="">
+            </div>
+            <div class="card-body">
+              <h3>Daily check-ins</h3>
+              <p>Knowing the day went normally, without watching anyone.</p>
+            </div>
           </a></li>
         </ul>
         <p style="margin-top:2rem">

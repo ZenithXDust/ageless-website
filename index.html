@@ -113,6 +113,18 @@
       </div>
     </section>
 
+    <!-- A reserved space for a photograph. If images/photo-home.jpg does not
+         exist, js/photos.js deletes this whole block, so there is never an
+         empty gap or a broken image on the page. See PHOTOS.md. -->
+    <section class="photo-band">
+      <div class="shell">
+        <figure class="photo-slot photo-figure" hidden
+                data-photo="photo-home.jpg"
+                data-alt="An older woman making tea in her own kitchen.">
+        </figure>
+      </div>
+    </section>
+
     <!-- HOW IT WORKS. A real ordered list, so the sequence is in the markup
          and not only in the way it looks. -->
     <section>
@@ -325,5 +337,6 @@
   </footer>
 
   <script src="js/nav.js"></script>
+  <script src="js/photos.js"></script>
 </body>
 </html>

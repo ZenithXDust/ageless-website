@@ -622,14 +622,26 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
 .solution-head img { display: block; width: 100%; max-width: 7.5rem; height: auto; }
 .solution-head h2 { margin: 0; }
 
-/* Ready for real photographs once there are some. object-fit stops a photo of
-   the wrong shape from stretching: it crops to fill the box instead. */
+/* Real photographs. object-fit stops a photo of the wrong shape from
+   stretching: it crops to fill the box instead, so a portrait and a landscape
+   photo both sit correctly in the same slot. */
 .photo {
   display: block; width: 100%; height: auto;
   aspect-ratio: 3 / 2;
   object-fit: cover;
   border-radius: var(--radius);
   background: var(--line);
+}
+
+/* A reserved space for a photograph. It starts hidden and js/photos.js either
+   fills it or deletes it, so a photo that has not been taken yet leaves no
+   gap and no broken image icon. */
+.photo-slot { margin: 0; }
+.photo-slot[hidden] { display: none; }
+.photo-band { padding-block: var(--s5); }
+.photo-figure { margin: 0; }
+.photo-figure figcaption {
+  font-size: 1.0625rem; color: var(--ink-muted); margin-top: var(--s1);
 }
 
 

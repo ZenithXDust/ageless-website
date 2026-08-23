@@ -57,24 +57,31 @@ a stock image is a fabricated testimonial, and it is the fastest way to destroy
 the trust the rest of the site is built on. Photographs may set a mood. They may
 never make a claim.
 
-## How to add them
+## How to add them: drop the file in, that is all
 
-1. Save each photo as a `.jpg` in the `images/` folder.
-2. Resize to about 1200 pixels wide before uploading. A 6 MB photo from a phone
-   will make the site slow on a mobile connection, and slow pages lose visitors.
-3. Name them plainly: `photo-kitchen.jpg`, `photo-front-door.jpg`.
+The site already has spaces reserved for photographs. Each one checks whether
+its file exists. If it does, the photo appears. If it does not, the space is
+removed completely, so there is never a gap or a broken image icon.
 
-Then either send them to me and I will place them, or paste this yourself where
-you want one, changing the filename and the description:
+That means **you do not have to edit any HTML.** Save a file with the exact
+name below into the `images/` folder, push it, and it appears.
 
-```html
-<img class="photo" src="images/photo-kitchen.jpg" width="1200" height="800"
-     alt="A woman in her seventies making tea in her own kitchen.">
-```
+| Save it as | Where it shows up |
+|---|---|
+| `images/photo-home.jpg` | Home page, below "What families call us about" |
+| `images/photo-about.jpg` | About page, before "What we believe" |
+| `images/photo-assessment.jpg` | How It Works, at the assessment step |
+| `images/photo-install.jpg` | How It Works, at the installation step |
 
-The `alt` text is what a blind visitor hears in place of the picture, and what
-shows if the image fails to load. Describe what is happening, plainly. Do not
-write "image of" and do not leave it empty on a photograph.
+Two things before you save:
+
+1. **Resize to about 1200 pixels wide.** A photo straight off a phone can be
+   6 MB, which makes the page slow on mobile data, and slow pages lose visitors.
+2. **Use .jpg**, not .png or .heic. The names above are exact, including the
+   extension.
+
+If you want a photo somewhere else, or want to change the description a screen
+reader reads out, send it to me and I will place it.
 
 ## Suggested places, in order of impact
 

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" role="img" aria-labelledby="t">
+  <title id="t">A system checked and kept running month after month</title>
+  <g fill="none" stroke="#1E5442" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M80 22 L112 34 v26 c0 20 -14 32 -32 38 c-18 -6 -32 -18 -32 -38 V34 Z" fill="#FFFFFF"/>
+    <path d="M66 62 l10 11 l20 -24" stroke="#7E3D1E" stroke-width="5"/>
+  </g>
+  <g fill="none" stroke="#2F4858" stroke-width="3" stroke-linecap="round">
+    <path d="M126 46 a20 20 0 0 1 0 26"/>
+    <path d="M34 46 a20 20 0 0 0 0 26"/>
+  </g>
+</svg>

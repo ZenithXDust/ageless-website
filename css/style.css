@@ -645,6 +645,42 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
 }
 
 
+/* Step illustrations, sitting above the heading inside each numbered step. */
+.step-art { display: block; width: 100%; max-width: 6.5rem; height: auto; margin-bottom: var(--s2); }
+
+/* A small illustration set into a heading on the longer pages. */
+.head-art {
+  display: block; width: 4.5rem; height: auto; margin-bottom: var(--s1);
+}
+@media (min-width: 44rem) {
+  .head-art { display: inline-block; vertical-align: middle; margin: 0 var(--s2) 0 0; }
+}
+
+/* Credentials. These belong to a person, not to the company, and the label
+   above them says so. Presented as plain bordered chips rather than anything
+   resembling an official badge or seal, because they are not one. */
+.creds-label {
+  font-family: var(--sans);
+  font-size: 0.9375rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-muted);
+  margin: var(--s4) 0 var(--s2);
+}
+.creds {
+  display: flex; flex-wrap: wrap; gap: var(--s1);
+  list-style: none; padding: 0; margin: 0; max-width: none;
+}
+.creds li {
+  max-width: none;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  padding: 0.4rem var(--s2);
+  font-size: 1.0625rem; font-weight: 600;
+  color: var(--ink);
+}
+
+
 /* --------------------------------------------------------------------------
    11. FAQ
    Built on <details>, which opens and closes with no JavaScript at all and is

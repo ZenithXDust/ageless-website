@@ -90,10 +90,13 @@ This is not a checklist item. It is the product personality.
 - Amin runs the whole service himself today. More staff are intended but not hired. Never write "our team" or "our staff" as though they already exist.
 - Bookings are offered Monday to Sunday, 9am to 9pm Eastern time
 - The three booking types are: assessment call, in-home installation, on-site technical support
+- The assessment is a flat $249 CAD plus tax, credited in full against an installation if the client proceeds
+- Response time commitment: within one business day
+- Equipment, installation and monthly service prices are still not set. Never publish a number for those.
 
 ## Facts you must ask me about before using
 
-- Pricing
+- Any price other than the assessment fee
 - Email address and mailing address
 - Specific product brands we resell
 - Anything about insurance, bonding, or police checks

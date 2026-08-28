@@ -690,10 +690,6 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
   color: var(--green);
   margin: 0 0 var(--s2);
 }
-.price .price-note {
-  display: block; font-family: var(--sans); font-size: 1rem;
-  color: var(--ink-muted); margin-top: var(--s1);
-}
 
 
 /* --------------------------------------------------------------------------

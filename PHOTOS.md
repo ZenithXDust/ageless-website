@@ -83,11 +83,74 @@ Two things before you save:
 If you want a photo somewhere else, or want to change the description a screen
 reader reads out, send it to me and I will place it.
 
-## Suggested places, in order of impact
+## The shot list
 
-1. **Home hero**, beside or under the headline. The single highest-value photo.
-2. **About page**, near the top. Since there is no photo of you, a warm image of
-   the kind of home you work in does the job instead.
-3. **How It Works**, one photo at the assessment step.
-4. **Solutions**, one per section, if you find six good ones. Do not force it.
-   Four strong photos beat six weak ones.
+Four photos. All four can be taken in your own home, a relative's home, or on
+your own street. You do not need a client, a model, or a special location.
+
+**You already own a stove.** That is the shot. It does not have to be a fitted
+device or somebody else's kitchen. A real kitchen in normal use is the point.
+
+### 1. `photo-home.jpg` — a kitchen in ordinary use
+
+The most valuable of the four. Home page, under "What families call us about".
+
+- **Shoot:** your own hob from a slight angle, with a kettle or a pot on it.
+  Morning light. A mug and a tea towel on the counter make it look lived in
+  rather than staged.
+- **Fallback:** a kitchen window with the light coming through, or a kettle
+  mid-boil.
+- **Avoid:** a spotless showroom kitchen. It should look like somebody cooks
+  there.
+
+### 2. `photo-about.jpg` — a front door
+
+About page. Sets the whole tone: this is about somebody's home.
+
+- **Shoot:** the front door or porch of an ordinary house, taken from the
+  pavement. Walk down your own street. Brick, a storm door, a step, a porch
+  light.
+- **Fallback:** your own front hall from inside, looking towards the door.
+- **Avoid:** a house number that identifies a real address, and anybody's face
+  at a window.
+
+### 3. `photo-assessment.jpg` — somebody looking carefully
+
+How It Works, at the assessment step. This one sells the service.
+
+- **Shoot:** your own hands holding a notebook or tablet, in a kitchen or at the
+  bottom of a staircase. Have somebody take it, or prop the phone up.
+- **Fallback:** a staircase with the handrail, shot from the bottom looking up.
+  Or a hallway at night with the light on.
+- **Avoid:** anything that looks like an inspection clipboard cliche.
+
+### 4. `photo-install.jpg` — hands doing the work
+
+How It Works, at the installation step.
+
+- **Shoot:** your hands with a screwdriver at a wall plate, a socket, or a smoke
+  alarm. If you own any sensor, plug or dispenser, photograph it in your hand or
+  on a counter.
+- **Fallback:** a toolbag open on a kitchen floor. A drill and a wall plate.
+- **Avoid:** a bare product shot on a white background. That is a catalogue, and
+  you are not a catalogue.
+
+## Taking them on a phone
+
+1. **Turn the phone sideways.** The slots are landscape. A vertical photo gets
+   cropped and you lose the edges.
+2. **Wipe the lens first.** It is smeared. It always is, and it is the single
+   most common reason a phone photo looks soft.
+3. **No flash.** Use daylight, near a window, in the morning or late afternoon.
+   Flash makes a home look like a crime scene.
+4. **Take five of each**, moving a step left or right between them. Choose later.
+   The first shot is rarely the best one.
+5. **Get closer than feels right.** Detail reads better than a whole room.
+6. **Nobody's face** unless you have their written permission, and never a
+   client's home without it.
+
+## Then
+
+Send them to me and I will resize, name and place them, or do it yourself:
+resize to about 1200 pixels wide, save as `.jpg` with the exact names above,
+drop them into `images/`, and commit.

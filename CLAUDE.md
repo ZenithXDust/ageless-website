@@ -93,6 +93,9 @@ This is not a checklist item. It is the product personality.
 - The assessment is a flat $249 CAD plus tax, credited in full against an installation if the client proceeds
 - Response time commitment: within one business day
 - Equipment, installation and monthly service prices are still not set. Never publish a number for those.
+- Service area: Ottawa and the surrounding region, and Toronto and the Greater Toronto Area
+- Cancellation is deliberately generous. An assessment can be cancelled or moved at any time before it at no charge. The monthly service can be cancelled at any time, with no notice period, no fee, and a refund of the unused part of the month.
+- The business is incorporated. The exact legal name is still to be confirmed, so the footer says "Ageless" until it is.
 
 ## Facts you must ask me about before using
 

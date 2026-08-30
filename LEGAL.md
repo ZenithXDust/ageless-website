@@ -60,14 +60,30 @@ This business carries more risk than a typical local service company:
    claim. Nothing about insurance appears on the site because it has not been
    confirmed.
 
-## Terms that were assumed, not given
+## Terms confirmed by the owner
 
-These were written as sensible defaults. Confirm or change each one:
+- Assessment fee: $249 CAD plus tax, credited in full against an installation.
+- Cancel or move an assessment at any time before it, at no charge. Half the fee
+  may be charged only for a no-show with no contact.
+- The monthly service can be cancelled at any time: no notice period, no fee,
+  and the unused part of the month is refunded.
+- Response time: within one business day.
 
-- 24 hours notice to cancel an assessment, full fee charged for a no-show
-- 30 days notice to cancel the monthly service
-- No refunds of part months
+These are deliberately generous, chosen on the reasoning that a service which is
+hard to leave is a service anxious families hesitate to start. The commercial
+risk is real but small: the exposure is one wasted trip and part of one month.
+
+## Terms still assumed, not confirmed
+
 - Monthly service billed in advance
 - Assessment fee payable at the time of the visit
 - Client records kept for seven years after the service ends
 - Non-client enquiries deleted within twelve months
+- 30 days notice **from Ageless** if we end a monthly service
+
+## Also outstanding
+
+- **The exact registered legal name.** The business is incorporated, but the
+  spelling was given verbally and could not be transcribed reliably. Until it is
+  confirmed in writing, the footer and the terms both say "Ageless". A wrong
+  legal name in a contract term is worse than none.

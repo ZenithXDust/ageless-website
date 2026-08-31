@@ -22,6 +22,14 @@
   var form = document.querySelector("[data-booking]");
   if (!form) return;
 
+  // A form with nowhere to send to would reload the page if it were ever
+  // submitted, wiping the visitor's choices. It cannot happen today, because
+  // there is no submit button and no text field, but that would change the
+  // moment anybody adds one. Stopping it here means it can never happen.
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+  });
+
   // ---------------------------------------------------------------------
   // The visitor's three choices live here. Everything else is drawn from it.
   // ---------------------------------------------------------------------

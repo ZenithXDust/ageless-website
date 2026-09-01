@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Contact — Ageless</title>
-  <meta name="description" content="Contact Ageless to schedule an in-home safety assessment in Ottawa and the surrounding communities.">
+  <title>Book an Assessment — Ageless, Ottawa ON</title>
+  <meta name="description" content="Request an in-home safety assessment from Ageless in Ottawa, ON. Booking form plus answers on assessment duration, the 48-hour report turnaround, and contractor coordination.">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -24,10 +24,8 @@
       <nav class="site-nav" aria-label="Primary">
         <ul class="site-nav__list">
           <li><a href="index.html">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="framework.html">Framework</a></li>
-          <li><a href="assessment.html">The Assessment</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="framework.html">Assessment Framework</a></li>
           <li><a href="contact.html" aria-current="page">Contact</a></li>
         </ul>
         <a class="btn btn--primary site-nav__cta" href="contact.html">Book an assessment</a>
@@ -37,82 +35,85 @@
 
   <main id="main">
 
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-heading">
       <div class="container">
         <div class="hero__inner">
           <span class="eyebrow">Contact</span>
-          <h1>Book an in-home safety assessment.</h1>
-          <p class="hero__lead">Tell us a little about your situation and we&rsquo;ll be in touch within one business day to arrange a visit. There is no cost or obligation to have this first conversation.</p>
+          <h1 id="hero-heading">Book an in-home safety assessment.</h1>
+          <p class="hero__lead">Tell us a little about your situation and we&rsquo;ll reply within one business day to arrange a visit anywhere in Ottawa and the surrounding communities. There is no cost or obligation for this first conversation.</p>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" aria-labelledby="form-heading">
       <div class="container">
         <div class="grid" style="align-items:start;">
 
           <div>
-            <h2>Send a message</h2>
+            <h2 id="form-heading">Booking request</h2>
             <!--
-              This form posts to Formspree as a no-backend option.
-              Replace {FORM_ID} with your real endpoint, or swap in your provider.
+              Dependency-free: a plain HTML form, no JavaScript.
+              Set `action` to a form endpoint that needs no client-side script
+              (e.g. Formspree, Web3Forms, or Netlify Forms) before going live.
               See README.md → "Before you publish".
             -->
-            <form class="form" action="https://formspree.io/f/{FORM_ID}" method="POST">
-              <p class="note">Fields marked <span class="required">*</span> are required.</p>
+            <form class="form" method="POST" action="#" name="booking">
+              <p class="note">Fields marked <span class="required" aria-hidden="true">*</span> are required.</p>
 
               <div class="field">
-                <label for="name">Your name <span class="required">*</span></label>
-                <input type="text" id="name" name="name" autocomplete="name" required>
+                <label for="name">Full name <span class="required" aria-hidden="true">*</span></label>
+                <input type="text" id="name" name="name" autocomplete="name" required aria-required="true">
               </div>
 
               <div class="field">
-                <label for="relationship">Who is the assessment for?</label>
-                <select id="relationship" name="relationship">
-                  <option value="myself">Myself</option>
-                  <option value="parent">A parent</option>
-                  <option value="spouse-partner">A spouse or partner</option>
-                  <option value="other-family">Another family member</option>
-                  <option value="client">A client (I&rsquo;m a professional)</option>
-                </select>
+                <label for="phone">Phone <span class="required" aria-hidden="true">*</span></label>
+                <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" required aria-required="true">
               </div>
 
               <div class="field">
-                <label for="email">Email <span class="required">*</span></label>
-                <input type="email" id="email" name="email" autocomplete="email" required>
+                <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
+                <input type="email" id="email" name="email" autocomplete="email" required aria-required="true">
               </div>
 
               <div class="field">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel">
-              </div>
-
-              <div class="field">
-                <label for="city">City or neighbourhood</label>
-                <input type="text" id="city" name="city" autocomplete="address-level2" value="Ottawa">
+                <label for="location">Ottawa neighbourhood or postal code
+                  <span class="hint">Helps us plan travel &mdash; e.g. &ldquo;Barrhaven&rdquo; or &ldquo;K2J&rdquo;.</span>
+                </label>
+                <input type="text" id="location" name="location" autocomplete="postal-code">
               </div>
 
               <fieldset>
-                <legend>Preferred way to reach you</legend>
+                <legend>Service needed <span class="required" aria-hidden="true">*</span></legend>
                 <div class="radio-row">
-                  <input type="radio" id="contact-email" name="preferred_contact" value="email" checked>
-                  <label for="contact-email">Email</label>
+                  <input type="radio" id="need-self" name="service_needed" value="self" required aria-required="true">
+                  <label for="need-self">For myself</label>
                 </div>
                 <div class="radio-row">
-                  <input type="radio" id="contact-phone" name="preferred_contact" value="phone">
-                  <label for="contact-phone">Phone call</label>
+                  <input type="radio" id="need-parent" name="service_needed" value="parent">
+                  <label for="need-parent">For a parent or family member</label>
                 </div>
                 <div class="radio-row">
-                  <input type="radio" id="contact-text" name="preferred_contact" value="text">
-                  <label for="contact-text">Text message</label>
+                  <input type="radio" id="need-referral" name="service_needed" value="client-referral">
+                  <label for="need-referral">Client referral (I&rsquo;m a healthcare professional)</label>
                 </div>
               </fieldset>
 
               <div class="field">
-                <label for="message">How can we help? <span class="required">*</span>
-                  <span class="hint">A recent fall or near-miss, a room that feels unsafe, an upcoming hospital discharge &mdash; whatever is on your mind.</span>
+                <label for="preferred-time">Preferred assessment time</label>
+                <select id="preferred-time" name="preferred_time">
+                  <option value="no-preference">No preference</option>
+                  <option value="weekday-morning">Weekday morning</option>
+                  <option value="weekday-afternoon">Weekday afternoon</option>
+                  <option value="weekday-evening">Weekday evening</option>
+                  <option value="saturday">Saturday</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="message">Anything else we should know?
+                  <span class="hint">A recent fall or near-miss, a room that feels unsafe, an upcoming hospital discharge.</span>
                 </label>
-                <textarea id="message" name="message" required></textarea>
+                <textarea id="message" name="message"></textarea>
               </div>
 
               <!-- Honeypot: hidden from people, catches bots -->
@@ -121,21 +122,18 @@
                 <input type="text" id="company" name="_gotcha" tabindex="-1" autocomplete="off">
               </div>
 
-              <input type="hidden" name="_subject" value="New assessment request from ageless.ca">
-
-              <button type="submit" class="btn btn--primary btn--large">Send request</button>
+              <button type="submit" class="btn btn--primary btn--large">Send booking request</button>
             </form>
           </div>
 
           <div>
             <h2>Other ways to reach us</h2>
-            <!-- Contact details -->
-            <ul class="contact-details">
-              <li><strong>Phone</strong> <a href="tel:+14374575307">437-457-5307</a></li>
-              <li><strong>Email</strong> <a href="mailto:Agelesshomesafety@protonmail.com">Agelesshomesafety@protonmail.com</a></li>
-              <li><strong>Hours</strong> By appointment, Monday&ndash;Saturday</li>
-              <li><strong>Service area</strong> Ottawa and surrounding communities, including Kanata, Orl&eacute;ans, Barrhaven, Nepean, and Gloucester</li>
-            </ul>
+            <address class="contact-details">
+              <p><strong>Phone</strong> <a href="tel:+14374575307">437-457-5307</a></p>
+              <p><strong>Email</strong> <a href="mailto:Agelesshomesafety@protonmail.com">Agelesshomesafety@protonmail.com</a></p>
+              <p><strong>Hours</strong> By appointment, Monday&ndash;Saturday</p>
+              <p><strong>Service area</strong> Ottawa, ON and surrounding communities &mdash; Kanata, Orl&eacute;ans, Barrhaven, Nepean, and Gloucester</p>
+            </address>
 
             <div class="callout" style="margin-top:2rem;">
               <h3 style="margin-top:0;">What happens next</h3>
@@ -153,6 +151,58 @@
       </div>
     </section>
 
+    <section class="section section--alt" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-intro">
+          <h2 id="faq-heading">Frequently asked questions</h2>
+        </div>
+
+        <div class="accordion">
+          <details open>
+            <summary><span class="accordion__label">How long does the assessment take?</span></summary>
+            <div class="accordion__body">
+              <p class="lead">About two hours. It runs longer for a larger home or one with several bathrooms, and it is always paced to you &mdash; we take breaks whenever you want one.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="accordion__label">When do we get the report?</span></summary>
+            <div class="accordion__body">
+              <p class="lead">Within 48 hours of the visit. You receive a written priority action plan by email &mdash; or on paper if you prefer &mdash; with findings sorted into immediate, 30-day, and long-term, each with an estimated cost and timeframe.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="accordion__label">Do you do the installation work?</span></summary>
+            <div class="accordion__body">
+              <p class="lead">No. Ageless provides the clinical plan and equipment sourcing. If you&rsquo;d like, we coordinate with trusted, vetted accessibility contractors and handymen in the Ottawa region &mdash; and you are always free to use your own. You approve every step, and nothing proceeds without you.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="accordion__label">What does it cost?</span></summary>
+            <div class="accordion__body">
+              <p class="lead">The first phone consultation is free. Assessment pricing depends on the size of the home and the number of bathrooms &mdash; contact us for current rates. Equipment and any contractor work are quoted separately and are yours to accept or decline.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="accordion__label">Do we need to prepare or tidy up?</span></summary>
+            <div class="accordion__body">
+              <p class="lead">No &mdash; please don&rsquo;t. We need to see the home the way it is actually lived in. Just have any assistive devices you use (cane, walker, shower chair) on hand so we can see them in place.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="accordion__label">What area do you serve?</span></summary>
+            <div class="accordion__body">
+              <p class="lead">Ottawa, ON and the surrounding communities, including Kanata, Orl&eacute;ans, Barrhaven, Nepean, and Gloucester. Ask us if you&rsquo;re just outside that area.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
@@ -166,22 +216,21 @@
           <h2 class="site-footer__heading">Pages</h2>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="framework.html">Framework</a></li>
-            <li><a href="assessment.html">The Assessment</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="framework.html">Assessment Framework</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="assessment.html">The Walk-Through</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
         <div>
-          <h2 class="site-footer__heading">Get in touch</h2>
-          <!-- Contact details -->
-          <ul>
-            <li><a href="tel:+14374575307">437-457-5307</a></li>
-            <li><a href="mailto:Agelesshomesafety@protonmail.com">Agelesshomesafety@protonmail.com</a></li>
-            <li>By appointment, Monday&ndash;Saturday</li>
-            <li>Serving Ottawa &amp; surrounding communities</li>
-          </ul>
+          <h2 class="site-footer__heading">Contact &amp; location</h2>
+          <address class="site-footer__contact">
+            <a href="tel:+14374575307">437-457-5307</a>
+            <a href="mailto:Agelesshomesafety@protonmail.com">Agelesshomesafety@protonmail.com</a>
+            <span>Ottawa, ON, Canada</span>
+            <span>By appointment, Monday&ndash;Saturday</span>
+          </address>
         </div>
       </div>
       <div class="site-footer__legal">

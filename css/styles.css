@@ -16,7 +16,7 @@
 
   /* Navy ink */
   --text: #172438;          /* primary text — dark navy blue (~13:1 on cream) */
-  --text-muted: #47536A;    /* secondary text (~6.5:1 on cream) */
+  --text-muted: #3A4557;    /* secondary text — WCAG AAA, >=7:1 on every surface */
 
   /* Navy brand (structure: headings, nav, numbering, footer) */
   --primary: #1B2A47;
@@ -24,14 +24,14 @@
   --on-primary: #FFFFFF;
 
   /* Muted orange (highlights + buttons) */
-  --accent: #B25E28;        /* button fills — paired with white text (~4.7:1) */
-  --accent-hover: #9A4F1F;
-  --accent-text: #8F4A1A;   /* orange used AS text on cream/white (~5.9:1) */
+  --accent: #A85520;        /* button fills — white text >=5:1 (AAA large text) */
+  --accent-hover: #8A4318;
+  --accent-text: #703A12;   /* orange used AS text — WCAG AAA, >=7:1 on cream/white */
   --on-accent: #FFFFFF;
 
   --border: #E1D4BC;
   --border-strong: #CBB994;
-  --focus-ring: #B25E28;
+  --focus-ring: #A85520;
 
   --shadow-sm: 0 1px 2px rgba(23, 36, 56, .07);
   --shadow-md: 0 2px 6px rgba(23, 36, 56, .08), 0 16px 32px -20px rgba(23, 36, 56, .30);
@@ -169,7 +169,7 @@ hr {
   max-width: var(--measure);
 }
 .prose > * + * {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
 .lead {
@@ -285,8 +285,8 @@ hr {
 .site-nav__list a {
   display: inline-flex;
   align-items: center;
-  min-height: 2.75rem;
-  padding: 0.25rem;
+  min-height: 3rem;          /* >= 48px tap target */
+  padding: 0.25rem 0.5rem;
   color: var(--text);
   font-weight: 600;
   text-decoration: none;
@@ -440,6 +440,42 @@ hr {
   color: var(--primary);
 }
 
+/* ---------- Action card (page-level CTA) ---------- */
+.action-card {
+  display: grid;
+  gap: 1.15rem;
+  max-width: 44rem;
+  background: var(--surface);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  box-shadow: var(--shadow-md);
+}
+.action-card > h2,
+.action-card > h3 {
+  margin: 0;
+}
+.action-card p {
+  margin: 0;
+  color: var(--text-muted);
+}
+.action-card .guarantee {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--accent-text);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  padding: 0.4rem 0.95rem;
+  font-size: 0.95rem;
+}
+.action-card .btn {
+  justify-self: start;
+}
+
 /* ---------- Forms ---------- */
 .form {
   max-width: 36rem;
@@ -497,17 +533,20 @@ hr {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
+  min-height: 3rem;          /* >= 48px tap target for the whole row */
+  padding: 0.25rem 0;
 }
 .radio-row input {
-  width: 1.3rem;
-  height: 1.3rem;
+  width: 1.4rem;
+  height: 1.4rem;
   min-height: 0;
   flex: none;
 }
 .radio-row label {
   margin: 0;
   font-weight: 400;
+  flex: 1;
 }
 .required {
   color: var(--accent-text);
@@ -520,14 +559,23 @@ hr {
 
 /* ---------- Contact details ---------- */
 .contact-details {
+  font-style: normal;        /* reset <address> italics */
   list-style: none;
   padding: 0;
   margin: 0;
   display: grid;
   gap: 0.75rem;
 }
+.contact-details p {
+  margin: 0;
+}
 .contact-details strong {
   display: block;
+}
+.contact-details a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
 }
 
 /* ---------- Assessment page components ---------- */
@@ -821,15 +869,29 @@ tbody tr:last-child th {
   padding: 0;
   margin: 0;
   display: grid;
-  gap: 0.5rem;
+  gap: 0.15rem;
 }
 .site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;       /* >= 44px; footer links */
   color: var(--text);
   text-decoration: none;
 }
 .site-footer a:hover {
   color: var(--primary);
   text-decoration: underline;
+}
+.site-footer address {
+  font-style: normal;
+  display: grid;
+  gap: 0.15rem;
+}
+.site-footer address span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  color: var(--text-muted);
 }
 .site-footer__brand p {
   color: var(--text-muted);

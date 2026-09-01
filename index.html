@@ -24,10 +24,8 @@
       <nav class="site-nav" aria-label="Primary">
         <ul class="site-nav__list">
           <li><a href="index.html" aria-current="page">Home</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="framework.html">Framework</a></li>
-          <li><a href="assessment.html">The Assessment</a></li>
           <li><a href="about.html">About</a></li>
+          <li><a href="framework.html">Assessment Framework</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
         <a class="btn btn--primary site-nav__cta" href="contact.html">Book an assessment</a>
@@ -37,11 +35,11 @@
 
   <main id="main">
 
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-heading">
       <div class="container">
         <div class="hero__inner">
           <span class="eyebrow">Ottawa &middot; Registered Nurse&ndash;led</span>
-          <h1>A clinical eye on the home you intend to keep.</h1>
+          <h1 id="hero-heading">A clinical eye on the home you intend to keep.</h1>
           <p class="hero__lead">Ageless provides in-home safety assessments and adaptive-equipment guidance led by a Registered Nurse. We identify the environmental hazards that lead to falls &mdash; and help you resolve them before they become a hospital visit.</p>
           <div class="hero__actions">
             <a class="btn btn--primary btn--large" href="contact.html">Book an assessment</a>
@@ -51,10 +49,10 @@
       </div>
     </section>
 
-    <section class="section section--alt">
+    <section class="section section--alt" aria-labelledby="why-heading">
       <div class="container">
         <div class="section-intro">
-          <h2>Why a nurse walks your home</h2>
+          <h2 id="why-heading">Why a nurse walks your home</h2>
           <p class="lead">Adapting a house for safety shouldn&rsquo;t mean it stops feeling like home. We focus on practical, high-impact changes that protect your mobility and your independence.</p>
         </div>
         <div class="grid">
@@ -74,10 +72,10 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" aria-labelledby="how-heading">
       <div class="container">
         <div class="section-intro">
-          <h2>How the assessment works</h2>
+          <h2 id="how-heading">How the assessment works</h2>
           <p>One visit, about two hours, conducted with you &mdash; and, if you wish, your family.</p>
         </div>
         <ol class="steps">
@@ -97,11 +95,11 @@
       </div>
     </section>
 
-    <section class="section section--alt">
+    <section class="section section--alt" aria-labelledby="zones-heading">
       <div class="container">
         <div class="section-intro">
-          <h2>Where falls actually happen</h2>
-          <p>Three zones account for most serious falls at home. They get the closest attention in every assessment.</p>
+          <h2 id="zones-heading">Where falls actually happen</h2>
+          <p>Four zones account for most serious falls at home. They get the closest attention in every assessment.</p>
         </div>
         <ul class="zone-list">
           <li>
@@ -116,23 +114,27 @@
             <h3>Stairways &amp; hallways</h3>
             <p>Continuous, firm handrails that extend past the top and bottom steps. Contrast on the stair edge, even light with switches at both ends, and a lit path from bedroom to bathroom.</p>
           </li>
+          <li>
+            <h3>Entryways &amp; thresholds</h3>
+            <p>A step-free way in and out where possible, thresholds bevelled below half an inch, and motion-activated lighting that covers the path, the steps, and the lock.</p>
+          </li>
         </ul>
         <p style="margin-top:1.5rem;"><a href="framework.html">See the full room-by-room framework</a></p>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" aria-labelledby="who-heading">
       <div class="container">
         <div class="prose">
-          <h2>Who we work with</h2>
+          <h2 id="who-heading">Who we work with</h2>
           <p>Whether you are planning ahead for yourself or looking out for a parent here in the Ottawa area, an Ageless assessment is a practical first step. We also work alongside care managers, hospital discharge planners, and occupational therapists who want an environmental evaluation for a client.</p>
         </div>
       </div>
     </section>
 
-    <section class="cta-band">
+    <section class="cta-band" aria-labelledby="cta-heading">
       <div class="container">
-        <h2>Let&rsquo;s secure your space.</h2>
+        <h2 id="cta-heading">Let&rsquo;s secure your space.</h2>
         <p>Contact us to schedule a comprehensive in-home safety assessment anywhere in Ottawa and the surrounding communities.</p>
         <a class="btn btn--primary btn--large" href="contact.html">Book an assessment</a>
       </div>
@@ -151,22 +153,21 @@
           <h2 class="site-footer__heading">Pages</h2>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="framework.html">Framework</a></li>
-            <li><a href="assessment.html">The Assessment</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="framework.html">Assessment Framework</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="assessment.html">The Walk-Through</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </nav>
         <div>
-          <h2 class="site-footer__heading">Get in touch</h2>
-          <!-- Contact details -->
-          <ul>
-            <li><a href="tel:+14374575307">437-457-5307</a></li>
-            <li><a href="mailto:Agelesshomesafety@protonmail.com">Agelesshomesafety@protonmail.com</a></li>
-            <li>By appointment, Monday&ndash;Saturday</li>
-            <li>Serving Ottawa &amp; surrounding communities</li>
-          </ul>
+          <h2 class="site-footer__heading">Contact &amp; location</h2>
+          <address class="site-footer__contact">
+            <a href="tel:+14374575307">437-457-5307</a>
+            <a href="mailto:Agelesshomesafety@protonmail.com">Agelesshomesafety@protonmail.com</a>
+            <span>Ottawa, ON, Canada</span>
+            <span>By appointment, Monday&ndash;Saturday</span>
+          </address>
         </div>
       </div>
       <div class="site-footer__legal">

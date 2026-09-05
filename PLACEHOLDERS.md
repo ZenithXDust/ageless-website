@@ -158,7 +158,9 @@ because merging it would tell Google to deindex the real site.
 
 `tools/check-tbd.sh` fails with exit 2 if that tag appears anywhere in the
 tracked working tree, apart from a small allowlist of tooling and
-documentation files that necessarily talk about it. The script prints the
+documentation files that necessarily talk about it, which are
+`tools/check-tbd.sh`, `tools/deploy-preview.sh`, `tools/preview-inject.py`,
+`PLACEHOLDERS.md`, `CLAUDE.md` and `README.md`. The script prints the
 allowlist when it runs, so the exemption is visible rather than hidden.
 
 A GitHub Action runs the same script on every push and writes the result into

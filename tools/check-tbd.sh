@@ -247,7 +247,7 @@ DRIFT_COUNT=$(count "$DRIFT")
 # Tracked files only, because scratch files are not what gets merged.
 # --------------------------------------------------------------------------
 NEEDLE="no""index"
-ALLOWLIST="tools/check-tbd.sh tools/deploy-preview.sh PLACEHOLDERS.md CLAUDE.md README.md"
+ALLOWLIST="tools/check-tbd.sh tools/deploy-preview.sh tools/preview-inject.py PLACEHOLDERS.md CLAUDE.md README.md"
 
 TRACKED=$(git ls-files 2>/dev/null)
 if [ -z "$TRACKED" ]; then

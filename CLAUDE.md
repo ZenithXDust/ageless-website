@@ -12,6 +12,39 @@ Ageless helps older adults stay in their own homes instead of moving into a reti
 
 We are not a home care staffing agency. We do not send caregivers. We are not a device manufacturer. We are the assessment, installation, and management layer that sits between families and the technology.
 
+## Positioning: this is a consulting business, not a care business
+
+Ageless sells environmental safety evaluation, residential technology work, and IT systems advisory. It does not sell care. Every page must read that way, because the distinction is what keeps the business on the right side of Ontario's rules on regulated health professions.
+
+The work is described in three pillars:
+
+1. **Environmental and functional safety evaluations.** Fall risk reduced by changing the building, not by treating the person: pathway lighting, stair tread nosing, reach zones, and anchoring plans for grab bars that a licensed trade then installs. Deliverables are a 48-hour client action plan and a contractor-ready punch list.
+2. **Smart home, network and IoT infrastructure.** Whole-home mesh Wi-Fi planned to remove the dead zones that make a medical alert pendant or a contact sensor unreliable. Local automation, UPS battery backup so the network survives a power cut, and basic residential network segmentation.
+3. **Business systems consulting.** Workstation and network baseline security reviews for independent clinics and allied health practices, plus technical writing, standard operating procedures, and workflow documentation for healthtech companies. This lives on its own page, `services-for-business.html`, because its buyer is not the family who reads the rest of the site.
+
+Amin's value is the combination: a BScN gives him the background to understand why a hallway matters at 3am, and the CompTIA certifications give him the ability to make the network behind the safety devices actually work. Say that as a combination of academic background and technical certification. Never say it as clinical practice.
+
+## Language that must not appear
+
+These are hard rules, not preferences.
+
+- Never "nurse", "RN", "registered nurse", or "nursing" applied to Amin or to the service. A BScN is a degree and may be stated. The title may not.
+- Never "nursing assessment", "patient", "patient care", "diagnosis", "medical assessment", "treatment", "therapy", or "clinical assessment".
+- Never describe an Ageless deliverable as clinical. The reports describe the **home**. Use "environmental safety evaluation", "functional safety evaluation", "functional mobility observations", "technical infrastructure plan".
+- The people Ageless works with are clients or the person living in the home. Never patients.
+
+This applies to the field tools and the generated report as much as to the website. A report headed with clinical language undoes every careful sentence on the site, because anyone questioning scope of practice will read the deliverable, not the marketing.
+
+## Required disclaimer
+
+This sentence appears in the footer of every page, and in the terms:
+
+> Ageless provides environmental safety assessments, residential technology consulting, and IT systems advisory. Our services do not constitute regulated nursing care, medical diagnosis, or physical therapy.
+
+## Consultant and contractor, which is not the same thing
+
+Ageless assesses, specifies and designs. It installs low-voltage and plug-in technology itself. It does **not** perform structural or electrical work: grab bar anchoring, handrails, hardwired fixtures and plumbing are specified by Ageless and executed by licensed trades. Say this plainly wherever installation is described, so nobody assumes Ageless is doing work it is not licensed to do.
+
 ## Who the website is for
 
 The primary visitor is the adult child, aged roughly 45 to 65, who is worried about a parent living alone. They are the one who reads the site, makes the decision, and pays.
@@ -80,6 +113,7 @@ This is not a checklist item. It is the product personality.
 
 - Business name: Ageless
 - Founder: Amin Osman
+- Amin's title: Founder and Lead Consultant. Never Lead Assessor, and never anything containing a protected health title.
 - Service area: Ottawa and Toronto, Ontario
 - Phone: 437-457-5307
 - Founder background: works across healthcare and IT
@@ -110,5 +144,6 @@ This is not a checklist item. It is the product personality.
 These are not "ask first." These are never.
 
 - Never call Amin a nurse, an RN, or registered. He holds a BScN and is not currently licensed, so those words must not appear anywhere on the site.
+- Never describe any Ageless service as nursing, clinical, diagnostic, or therapeutic. See "Language that must not appear" above.
 - Never imply Ageless answers medical emergencies. Ageless is not an emergency response service. Emergency alerts route to 911 and to the family's emergency contacts. The 24/7 availability is for technical support, remote or on site, and the copy must always say so.
 - Never write invented statistics, testimonials, client names, or credentials.

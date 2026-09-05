@@ -127,6 +127,9 @@ LEGAL_NAME            terms.html
 PACKAGE_ORDER_RULE    solutions.html pricing.html
 VISIT_MODEL           index.html how-it-works.html pricing.html booking.html
 VISIT_MODEL           contact.html faq.html
+WORKSHOP_TALK_LENGTH  workshops.html
+WORKSHOP_DATES        workshops.html
+WORKSHOP_SERIES_LENGTH workshops.html
 VISIT_MODEL           resources-medical-alert-questions.html resources-pill-dispensers.html
 VISIT_MODEL           resources-stove-left-on.html resources-talking-to-a-parent.html
 ```
@@ -417,6 +420,52 @@ Three honest options, all true as far as is known:
    Shortest and safest. Says less, promises less, and drops the independence
    point entirely.
 
+### WORKSHOP_TALK_LENGTH
+
+- **What it is:** how long the free community talk runs, and whether you stay
+  afterwards.
+- **Why it matters:** a library or a seniors centre cannot put something in a
+  room booking without a length. It is the first question a host asks and the
+  page currently answers it with a hedge.
+- **Good answer:** a duration, and what happens at the end of it.
+- **Example:** `About 45 minutes, and we stay for another half hour for
+  questions.`
+- **Fallback now:** The talk takes about an hour, and we stay afterwards for
+  as long as there are questions.
+- **Appears in:** workshops.html
+- **Note:** the fallback commits you to roughly an hour. If that is wrong,
+  change it before anybody books a room on the strength of it.
+
+### WORKSHOP_DATES
+
+- **What it is:** whether there is a public schedule somebody can turn up to,
+  or whether every talk is arranged with a host.
+- **Why it matters:** an older adult reading this page wants to know how to
+  attend one. Right now the honest answer is that they cannot, directly,
+  because talks are booked by venues.
+- **Good answer:** either a place the schedule lives, or a plain statement
+  that talks are arranged through venues and how to ask.
+- **Example:** `Upcoming talks are listed at your local library. Call us and
+  we will tell you what is booked in your area.`
+- **Fallback now:** Talks are arranged with the place that hosts them, so ask
+  at your library or centre, or call us and we will tell you what is coming
+  up.
+- **Appears in:** workshops.html
+
+### WORKSHOP_SERIES_LENGTH
+
+- **What it is:** how many sessions the hands-on series runs to, and how
+  often.
+- **Why it matters:** it is a commitment being asked of somebody, and asking
+  people to commit to an unspecified number of sessions is how you get an
+  empty second week.
+- **Good answer:** a number of sessions and a frequency.
+- **Example:** `Six sessions, one a week, each about ninety minutes.`
+- **Fallback now:** The series runs over several sessions. Call and we will
+  tell you how many and how often, so you know what you are committing to
+  before you start.
+- **Appears in:** workshops.html
+
 ### LEGAL_NAME
 
 - **What it is:** the exact registered legal name of the incorporated
@@ -430,6 +479,17 @@ Three honest options, all true as far as is known:
 - **Example:** `1234567 Ontario Inc., operating as Ageless`
 - **Fallback now:** Ageless
 - **Appears in:** not yet placed
+
+## A note on the workshops page
+
+`workshops.html` carries no prices and never will: the talks and the series
+are both free. It also carries no `MARGIN_STATEMENT`, no package tokens and no
+`VISIT_MODEL`, deliberately. That page is community work and is kept separate
+from the part of the site that sells, so the tokens that exist to describe
+selling do not belong on it.
+
+The one thing on that page that mentions nursing is the footer disclaimer,
+which is mandated and unchanged. It is outside `<main>` and is not page copy.
 
 ---
 

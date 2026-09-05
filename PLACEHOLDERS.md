@@ -7,7 +7,10 @@ prices, the exact registered legal name. Rather than invent them or leave
 holes in the pages, each one is written into the site as a placeholder that
 already reads correctly.
 
-## Two kinds of placeholder
+## Three states
+
+Two kinds of placeholder, and a third state that is about a placeholder not
+being there at all.
 
 **Undecided, and blocking.** Nobody has settled this fact yet.
 
@@ -33,6 +36,11 @@ unfinished work.
 Keeping the two apart is what lets the check reach zero. If every token
 counted as outstanding forever, the gate could never pass, and a gate that
 can never pass is a gate you learn to ignore.
+
+**Expected but missing.** The third state, and the one that matters most. A
+page the manifest says must carry a token does not carry it. Its evidence is
+an absence, so counting what is present cannot find it. See the manifest
+below.
 
 ## The four rules
 
@@ -75,15 +83,79 @@ decision**, so change it in every page at once and update the entry here at
 the same time. `tools/check-tbd.sh --by-token` tells you every place it
 appears.
 
+## The manifest, which is what stops a false pass
+
+There is a third state, and it is the one that matters most.
+
+A token can be **expected but missing**. If `solutions.html` is supposed to
+carry `PACKAGE_1_PRICE` and does not, then the page is quietly wrong: it is
+either missing a price entirely or, worse, somebody typed a real number in
+without telling anybody. Counting only the tokens that are present cannot
+detect that, because the evidence is the absence.
+
+Without this, the check reports a clean pass at the exact moment the work has
+not started: no tokens placed anywhere means nothing outstanding means exit
+zero. That is a green light pointing the wrong way.
+
+So the manifest below names which pages must contain each token.
+`tools/check-tbd.sh` reads it from this file, and fails naming the file if a
+page that should carry a token does not.
+
+Keep it accurate. Adding a token to a page means adding the page here in the
+same change.
+
+<!-- MANIFEST-START -->
+```
+# TOKEN               pages that must contain it
+PACKAGE_1_NAME        index.html solutions.html pricing.html
+PACKAGE_1_PRICE       solutions.html pricing.html
+PACKAGE_1_CONTENTS    solutions.html
+PACKAGE_2_NAME        index.html solutions.html pricing.html
+PACKAGE_2_PRICE       solutions.html pricing.html
+PACKAGE_2_CONTENTS    solutions.html
+PACKAGE_3_NAME        index.html solutions.html pricing.html
+PACKAGE_3_PRICE       solutions.html pricing.html
+PACKAGE_3_CONTENTS    solutions.html
+PACKAGE_4_NAME        index.html solutions.html pricing.html
+PACKAGE_4_PRICE       solutions.html pricing.html
+PACKAGE_4_CONTENTS    solutions.html
+NETWORK_CHARGE        solutions.html pricing.html how-it-works.html
+INSTALL_INCLUDED      pricing.html how-it-works.html
+MONTHLY_PRICE         pricing.html how-it-works.html
+MARGIN_STATEMENT      pricing.html
+LEGAL_NAME            terms.html
+PACKAGE_ORDER_RULE    solutions.html pricing.html
+VISIT_MODEL           index.html how-it-works.html pricing.html booking.html
+```
+<!-- MANIFEST-END -->
+
 ## Checking what is left
 
 ```
-tools/check-tbd.sh              both lists, the counts, and an exit code
+tools/check-tbd.sh              all three states, the counts, and an exit code
 tools/check-tbd.sh --by-token   the same thing grouped by token
 ```
 
-Exit codes: `0` nothing undecided, `1` undecided placeholders remain, `2` a
-placeholder of either kind has text that must not be published.
+Exit codes:
+
+- `0` clean. No undecided token is present, no expected token is missing.
+  Settled tokens may still be there, and that is correct.
+- `1` work remains. An undecided token is still on a page, or a page named in
+  the manifest is missing a token it should carry.
+- `2` a fault. A placeholder of either kind has text that must not be
+  published, or the noindex tripwire fired, or the scan could not run.
+
+## The noindex tripwire
+
+The preview site carries a `robots` noindex tag in the head of every page so
+that Google never indexes it. That tag is injected at publish time into the
+preview repository only. **It must never be committed on `retail-model`**,
+because merging it would tell Google to deindex the real site.
+
+`tools/check-tbd.sh` fails with exit 2 if that tag appears anywhere in the
+tracked working tree, apart from a small allowlist of tooling and
+documentation files that necessarily talk about it. The script prints the
+allowlist when it runs, so the exemption is visible rather than hidden.
 
 A GitHub Action runs the same script on every push and writes the result into
 the run summary. It reports, it does not block. Publishing is a legacy Pages

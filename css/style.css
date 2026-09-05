@@ -922,3 +922,65 @@ html.tbd-show .settled::after {
     outline: 1px dotted #000;
   }
 }
+
+
+/* --------------------------------------------------------------------------
+   16. PRICE TABLE
+
+   The only component added during the retail conversion. The site had no
+   table styles at all, and the pricing page is the one page whose entire job
+   is being unambiguous, so browser default rendering was not good enough.
+
+   Built from existing tokens only. No new colours, no new typefaces, no
+   change to the palette, the type scale or the spacing scale. If this is
+   removed the table still reads correctly, just plainly.
+   -------------------------------------------------------------------------- */
+
+.price-table-wrap {
+  /* Wide content scrolls inside its own box rather than making the whole
+     page scroll sideways on a phone. */
+  overflow-x: auto;
+  margin: var(--s4) 0;
+}
+
+.price-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.price-table caption {
+  text-align: left;
+  color: var(--ink-muted);
+  padding-bottom: var(--s2);
+}
+
+.price-table th,
+.price-table td {
+  padding: var(--s2);
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.price-table thead th {
+  border-bottom: 2px solid var(--border-control);
+}
+
+/* The row label carries the meaning, so it is a th and it is not dimmed. */
+.price-table tbody th {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.price-table tbody tr:last-child th,
+.price-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* The second group of rows applies to every package rather than to one, and
+   the rule above it says so in the markup with a th spanning the row. */
+.price-table .row-group th {
+  padding-top: var(--s4);
+  color: var(--ink-muted);
+  font-weight: 400;
+}

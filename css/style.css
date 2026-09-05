@@ -55,7 +55,7 @@
   /* The three booking types. Colour is never the only signal: each one also
      carries its own icon and its own written label, because someone who does
      not distinguish these hues still has to be able to book an appointment. */
-  --assessment:     #1E5442;   /* deep green  */
+  --call:           #1E5442;   /* deep green  */
   --installation:   #7E3D1E;   /* clay        */
   --support:        #2F4858;   /* deep slate  */
 
@@ -520,7 +520,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
 }
 .service-option input:checked + .service-card .service-check { display: flex; }
 
-.svc-assessment   { --service: var(--assessment); }
+.svc-call         { --service: var(--call); }
 .svc-installation { --service: var(--installation); }
 .svc-support      { --service: var(--support); }
 

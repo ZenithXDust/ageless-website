@@ -119,13 +119,16 @@ PACKAGE_3_CONTENTS    solutions.html
 PACKAGE_4_NAME        index.html solutions.html pricing.html
 PACKAGE_4_PRICE       solutions.html pricing.html
 PACKAGE_4_CONTENTS    solutions.html
-NETWORK_CHARGE        solutions.html pricing.html how-it-works.html
-INSTALL_INCLUDED      pricing.html how-it-works.html
-MONTHLY_PRICE         pricing.html how-it-works.html
+NETWORK_CHARGE        solutions.html pricing.html how-it-works.html faq.html
+INSTALL_INCLUDED      pricing.html how-it-works.html faq.html
+MONTHLY_PRICE         pricing.html how-it-works.html faq.html
 MARGIN_STATEMENT      pricing.html
 LEGAL_NAME            terms.html
 PACKAGE_ORDER_RULE    solutions.html pricing.html
 VISIT_MODEL           index.html how-it-works.html pricing.html booking.html
+VISIT_MODEL           contact.html faq.html
+VISIT_MODEL           resources-medical-alert-questions.html resources-pill-dispensers.html
+VISIT_MODEL           resources-stove-left-on.html resources-talking-to-a-parent.html
 ```
 <!-- MANIFEST-END -->
 
@@ -443,8 +446,15 @@ outstanding.
   funnel. If one page said it and another implied otherwise, the site would
   be quietly misleading people about what they have to spend.
 - **Settled as:** Every package works on its own. Buy one, or several, in
-  whatever order suits. Each one includes the setup that home needs to make
-  it work, so there is nothing you have to buy first.
+  whatever order suits. There is no package you have to buy first, and if the
+  home needs network work that is a separate named item on the price list
+  rather than another package.
+- **Why the wording changed during the build:** the first draft said each
+  package "includes the setup that home needs". With the network charge
+  billed as its own published line, "includes" reads as "free", which
+  would have been a quiet contradiction of the pricing page. The network work
+  is in scope of every package; it is billed separately because not every home
+  needs it.
 - **Appears in:** not yet placed
 - **To change it:** see the package independence decision above, and revisit
   every `PACKAGE_N_PRICE` at the same time.

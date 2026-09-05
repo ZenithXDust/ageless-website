@@ -840,3 +840,55 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
   body { background: #fff; color: #000; font-size: 12pt; }
   a::after { content: " (" attr(href) ")"; font-size: 10pt; }
 }
+
+
+/* --------------------------------------------------------------------------
+   15. PLACEHOLDERS
+
+   A .tbd span marks a fact that has not been decided yet: a package name, a
+   price, the registered legal name. It always contains real fallback text
+   that is true and publishable on its own, so in normal use it needs no
+   styling at all, and it deliberately has none. On the live site a
+   placeholder is indistinguishable from ordinary copy, because that is what
+   a visitor should be reading.
+
+   The amber marking below applies only once js/tbd.js has added .tbd-show to
+   the <html> element, which it does only for a page opened from the file
+   system or served from localhost.
+
+   Keeping the switch on an ancestor class, rather than inside the .tbd rule
+   itself, means the safe state is the default. If the script never loads,
+   nothing is highlighted, instead of a customer being shown amber boxes.
+   Same principle as the photo slots in js/photos.js: unfinished is visible
+   to the owner and invisible to the visitor.
+   -------------------------------------------------------------------------- */
+
+html.tbd-show .tbd {
+  background: #FFF3D6;
+  color: #3A2A00;
+  outline: 2px dashed #8A5A00;
+  outline-offset: 2px;
+  border-radius: 3px;
+  padding: 0 0.15em;
+}
+
+/* The token name, printed after the fallback text. Colour is never the only
+   signal here: the dashed outline carries the same information for anybody
+   who does not distinguish the amber, and this label says in words which
+   placeholder it is. */
+html.tbd-show .tbd::after {
+  content: " [" attr(data-tbd) "]";
+  font-family: var(--sans);
+  font-size: 0.75em;
+  letter-spacing: 0.04em;
+  color: #5A3D00;
+}
+
+/* Printing a local copy to mark up by hand. Amber backgrounds waste ink and
+   some printers drop them entirely, so the outline does the work on paper. */
+@media print {
+  html.tbd-show .tbd {
+    background: none;
+    outline: 1px dashed #000;
+  }
+}

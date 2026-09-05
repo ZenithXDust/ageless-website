@@ -1,0 +1,60 @@
+# Reports which placeholders are still outstanding on the site.
+#
+# This is a notice board, not a gate. tools/check-tbd.sh exits 1 for as long
+# as any fact remains undecided, which is the normal state of this repository
+# and will be for a while, so the step is marked continue-on-error and the
+# job always finishes green. The result is written to the run summary, which
+# is where it is meant to be read.
+#
+# It cannot interfere with publishing. GitHub Pages on this repository is a
+# legacy branch build: it serves whatever is on main and is not driven by
+# Actions at all, so nothing in this file can stop the site going live.
+
+name: Placeholders
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Outstanding placeholders
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: List outstanding placeholders
+        id: tbd
+        continue-on-error: true
+        run: |
+          chmod +x tools/check-tbd.sh
+          set +e
+          OUTPUT=$(tools/check-tbd.sh)
+          STATUS=$?
+          set -e
+
+          # Echo to the job log, so it is visible in the usual place.
+          printf '%s\n' "$OUTPUT"
+
+          # And to the run summary, which is what somebody actually reads.
+          {
+            echo "## Placeholders"
+            echo
+            echo '```'
+            printf '%s\n' "$OUTPUT"
+            echo '```'
+            echo
+            case "$STATUS" in
+              0) echo "Nothing outstanding. Every token has a real value." ;;
+              1) echo "Placeholders remain. Expected until the facts are decided. See PLACEHOLDERS.md." ;;
+              2) echo "One or more placeholders have fallback text that must not be published. Worth fixing." ;;
+              *) echo "check-tbd.sh exited with status $STATUS." ;;
+            esac
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          exit $STATUS

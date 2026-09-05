@@ -143,7 +143,8 @@ Exit codes:
 - `1` work remains. An undecided token is still on a page, or a page named in
   the manifest is missing a token it should carry.
 - `2` a fault. A placeholder of either kind has text that must not be
-  published, or the noindex tripwire fired, or the scan could not run.
+  published, a settled token is worded two different ways on different pages,
+  the noindex tripwire fired, or the scan could not run.
 
 ## The noindex tripwire
 
@@ -455,10 +456,19 @@ outstanding.
 - **Why it is centralised:** it is named on the home page, how it works,
   pricing and booking. Four pages describing the first conversation four
   slightly different ways is how a visitor stops believing any of them.
-- **Settled as:** a free twenty minute phone call that ends with a
-  recommendation of which package suits, and the total price for that home,
-  with no obligation
-- **Appears in:** not yet placed
+- **The exact string on the pages:** `a free twenty minute phone call`
+
+  It is deliberately short, because it is dropped into the middle of other
+  sentences on four pages. The surrounding copy carries the rest of the
+  promise: that it ends with which package suits and the total for that home,
+  and that there is no obligation.
+- **The rest of the model, which the copy states:** the call asks the two or
+  three questions needed to know whether that home needs network work, and
+  the caller is told the total on that call, before anybody comes out.
+- **Appears in:** index.html, how-it-works.html, pricing.html, booking.html
+- **Checked automatically:** `tools/check-tbd.sh` fails with exit 2 if this
+  string is worded differently in different places, which is the entire
+  reason it is a settled token rather than plain copy.
 
 Two alternatives, kept so the decision can be reversed by editing this one
 token and the copy it names:

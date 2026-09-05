@@ -52,8 +52,8 @@
 #      Settled tokens may still exist, and that is correct.
 #   1  work remains. An undecided token is on a page, or a page named in the
 #      manifest is missing a token it should carry.
-#   2  a fault. Text that must not be published, the tripwire, or a scan that
-#      could not run.
+#   2  a fault. Text that must not be published, a settled token worded two
+#      different ways, the tripwire, or a scan that could not run.
 
 set -u
 
@@ -84,6 +84,7 @@ fi
 # Rows are tab separated:
 #   OPEN     TOKEN  file  line
 #   SETTLED  TOKEN  file  line
+#   TEXT     TOKEN  file  line  text
 #   BAD      TOKEN  file  line  text
 # --------------------------------------------------------------------------
 SCAN=$(awk '
@@ -117,6 +118,8 @@ SCAN=$(awk '
       sub(/^[^>]*>/, "", text)
       sub(/<\/span>$/, "", text)
       gsub(/^[ \t]+|[ \t]+$/, "", text)
+
+      print "TEXT\t" tok "\t" FILENAME "\t" FNR "\t" text
 
       up = toupper(text)
       if (text == "" || text == "$" ||
@@ -197,6 +200,44 @@ MISSING=$(printf '%s\n' "$MANIFEST" | awk -v present="$PRESENT" '
 ' | sort -u)
 
 MISSING_COUNT=$(count "$MISSING")
+
+# --------------------------------------------------------------------------
+# Drift.
+#
+# A settled token exists for exactly one reason: the same decided fact is
+# written into several pages, and each page carrying its own wording is how a
+# site ends up quietly contradicting itself. So if one settled token has two
+# different texts anywhere on the site, that is the failure the second state
+# was invented to prevent, and it is a fault rather than a status.
+#
+# Undecided tokens are deliberately NOT checked this way. Their fallback text
+# is allowed to be phrased to fit its sentence, because it is placeholder
+# prose that is going to be replaced.
+# --------------------------------------------------------------------------
+DRIFT=$(printf '%s\n' "$SCAN" | awk -F'\t' -v settled="$SETTLED_TOKENS" '
+  BEGIN {
+    n = split(settled, a, "\n")
+    for (i = 1; i <= n; i++) if (a[i] != "") is_settled[a[i]] = 1
+  }
+  $1 == "TEXT" && ($2 in is_settled) {
+    key = $2 SUBSEP $5
+    if (!(key in seen)) { seen[key] = 1; variants[$2]++ }
+    where[$2 SUBSEP $5] = where[$2 SUBSEP $5] $3 ":" $4 " "
+    text[$2 SUBSEP variants[$2]] = $5
+  }
+  END {
+    for (tok in variants) {
+      if (variants[tok] > 1) {
+        print tok " has " variants[tok] " different wordings:"
+        for (k in where) {
+          split(k, parts, SUBSEP)
+          if (parts[1] == tok) print "    " where[k] "  \"" parts[2] "\""
+        }
+      }
+    }
+  }')
+
+DRIFT_COUNT=$(count "$DRIFT")
 
 # --------------------------------------------------------------------------
 # The tripwire.
@@ -294,6 +335,16 @@ fi
 # --------------------------------------------------------------------------
 # Exit
 # --------------------------------------------------------------------------
+if [ "$DRIFT_COUNT" -gt 0 ]; then
+  echo
+  echo "DRIFT: a settled token is worded differently in different places."
+  echo "Settled tokens exist so one decided fact reads the same on every page."
+  echo "Make these identical, or the site contradicts itself:"
+  echo
+  printf '%s\n' "$DRIFT" | awk 'NF {print "  " $0}'
+  exit 2
+fi
+
 if [ "$TRIPPED_COUNT" -gt 0 ]; then
   echo
   echo "TRIPWIRE: the preview-only robots tag is present in files that get merged."

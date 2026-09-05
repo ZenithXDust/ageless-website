@@ -30,8 +30,8 @@ Be honest about who you are selling to. Your buyer is a worried adult child
 aged roughly 45 to 65. They are not looking for you on TikTok.
 
 **1. Google Business Profile. Do this one first.**
-It is free, it is what appears when somebody searches "home safety assessment
-Ottawa", and it is where reviews accumulate. For a local service business it is
+It is free, it is what appears when somebody searches for help keeping a
+parent at home in Ottawa, and it is where reviews accumulate. For a local service business it is
 worth more than every social account combined. Set it up at
 google.com/business. You will need to verify your address, which for a business
 without a storefront means listing a service area rather than a location.
@@ -53,23 +53,23 @@ abandoned account is worse than no account.
 
 **Short bio, under 160 characters:**
 
-> Home safety assessments, technology installation and ongoing support that help
-> older adults stay in their own homes. Ottawa and Toronto. 437-457-5307
+> Home technology chosen, installed and kept working, so older adults can stay
+> in their own homes. Ottawa and Toronto. 437-457-5307
 
 **Longer description:**
 
 > Ageless helps older adults stay in their own homes instead of moving into a
 > retirement residence.
 >
-> We do three things: an in-home safety and independence assessment with a
-> written report, sourcing and installing the right technology for that
-> specific home, and an ongoing monthly service that keeps the system working
-> and the family informed.
+> We do three things: we sell packages of technology chosen for a particular
+> worry, at a published price, we install and set them up in the home, and we
+> run an ongoing monthly service that keeps everything working and the family
+> informed.
 >
 > We are not a home care agency and we do not send caregivers. We are not a
-> device manufacturer. We are the assessment, installation and management layer
-> between families and the technology, which means we can recommend against a
-> product when it is not right for the home.
+> device manufacturer. We choose the equipment, sell it, fit it and maintain
+> it, and because we are not tied to one manufacturer we can tell you when a
+> product is not right for the home.
 >
 > Founded by Amin Osman, who holds a BScN and CompTIA A+, Network+ and
 > Security+ certifications, with experience in in-home care and crisis
@@ -78,9 +78,10 @@ abandoned account is worse than no account.
 > Serving Ottawa and the surrounding region, and Toronto and the Greater
 > Toronto Area. Call 437-457-5307.
 
-**Categories to choose, where a platform asks:** Home Automation Company, Senior
-Care Service, or Home Health Care Service, in that order of accuracy. Avoid
-anything with "medical" in the name.
+**Categories to choose, where a platform asks:** Home Automation Company,
+Electronics Store, or Senior Care Service, in that order of accuracy. Avoid
+anything with "medical" in the name. A retail category is now more accurate
+than a care category.
 
 ## Two rules that carry over from the website
 

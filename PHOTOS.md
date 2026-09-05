@@ -70,7 +70,7 @@ name below into the `images/` folder, push it, and it appears.
 |---|---|
 | `images/photo-home.jpg` | Home page, below "What families call us about" |
 | `images/photo-about.jpg` | About page, before "What we believe" |
-| `images/photo-assessment.jpg` | How It Works, at the assessment step |
+| `images/photo-assessment.jpg` | How It Works, at the monthly service step |
 | `images/photo-install.jpg` | How It Works, at the installation step |
 
 Two things before you save:
@@ -91,7 +91,7 @@ your own street. You do not need a client, a model, or a special location.
 **You already own a stove.** That is the shot. It does not have to be a fitted
 device or somebody else's kitchen. A real kitchen in normal use is the point.
 
-### 1. `photo-home.jpg` — a kitchen in ordinary use
+### 1. `photo-home.jpg`, a kitchen in ordinary use
 
 The most valuable of the four. Home page, under "What families call us about".
 
@@ -103,7 +103,7 @@ The most valuable of the four. Home page, under "What families call us about".
 - **Avoid:** a spotless showroom kitchen. It should look like somebody cooks
   there.
 
-### 2. `photo-about.jpg` — a front door
+### 2. `photo-about.jpg`, a front door
 
 About page. Sets the whole tone: this is about somebody's home.
 
@@ -114,9 +114,10 @@ About page. Sets the whole tone: this is about somebody's home.
 - **Avoid:** a house number that identifies a real address, and anybody's face
   at a window.
 
-### 3. `photo-assessment.jpg` — somebody looking carefully
+### 3. `photo-assessment.jpg`, somebody looking carefully
 
-How It Works, at the assessment step. This one sells the service.
+How It Works, at the monthly service step. This one sells the part of the
+business that is hardest to photograph and easiest to underestimate.
 
 - **Shoot:** your own hands holding a notebook or tablet, in a kitchen or at the
   bottom of a staircase. Have somebody take it, or prop the phone up.
@@ -124,7 +125,7 @@ How It Works, at the assessment step. This one sells the service.
   Or a hallway at night with the light on.
 - **Avoid:** anything that looks like an inspection clipboard cliche.
 
-### 4. `photo-install.jpg` — hands doing the work
+### 4. `photo-install.jpg`, hands doing the work
 
 How It Works, at the installation step.
 

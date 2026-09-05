@@ -1,11 +1,16 @@
 # Ageless
 
-The website for Ageless, a home safety service in Ottawa and Toronto, Ontario.
+The website for Ageless, a curated retailer of home technology in Ottawa and
+Toronto, Ontario.
 
 Ageless helps older adults stay in their own homes instead of moving into a
-retirement residence, in three parts: an in-home safety assessment, sourcing
-and installing the right technology for that specific home, and an ongoing
-monthly service that keeps the system working and the family informed.
+retirement residence, in three parts: curated packages of technology chosen
+for a specific need and sold at a published price, installation and setup in
+the home, and an ongoing monthly service that keeps it working and the family
+informed.
+
+The device is not the product. The choosing, the installing and the keeping it
+working are.
 
 **Live site:** https://zenithxdust.github.io/ageless-website/
 
@@ -25,7 +30,10 @@ css/style.css           one stylesheet, shared by every page
 js/nav.js               the mobile menu
 js/booking.js           the appointment picker
 js/photos.js            shows or removes reserved photo spaces
+js/tbd.js               marks unfinished facts, locally only
 images/                 logo, illustrations, share card
+tools/check-tbd.sh      what is still undecided, run before merging
+tools/audit.sh          links, headings, alt text, chrome, dashes
 ```
 
 The header and footer are copied into each page rather than shared. That is
@@ -38,6 +46,11 @@ when opened directly.
 GitHub Pages serves the `main` branch. Pushing to `main` publishes the site,
 and it goes live in about a minute. There is no staging step, so `main` is
 production.
+
+**Never merge or push to `main` without checking first.** Run
+`tools/check-tbd.sh` and `tools/audit.sh`, and confirm the work is actually
+finished. A half-converted site on `main` is live immediately and the only way
+back is another push.
 
 ## Accessibility
 
@@ -54,10 +67,13 @@ tappable on every page without scrolling.
 | `CLAUDE.md` | House rules: tone, writing style, technical constraints, confirmed facts, and claims that must never appear |
 | `LEGAL.md` | What the terms and privacy policy do and do not cover, and what a lawyer should check |
 | `PHOTOS.md` | How to add photographs, where to source them, and the one rule not to break |
+| `PLACEHOLDERS.md` | Every fact still to be decided, what it means, and where it appears |
 | `design/logo-concepts.html` | The four logo directions considered, and why the current one was chosen |
 
 ## Not finished
 
 - No email address or contact form. Contact is phone only until a domain is settled.
-- Equipment and monthly service prices are not published, because they are not set.
-- The terms and privacy policy have not been reviewed by a lawyer. See `LEGAL.md`.
+- Package names and every price are placeholders, not blanks. They read as true
+  sentences today and are listed by `tools/check-tbd.sh`. See `PLACEHOLDERS.md`.
+- The terms and privacy policy have not been reviewed by a lawyer, and the
+  retail model added four new questions for one. See `LEGAL.md`.

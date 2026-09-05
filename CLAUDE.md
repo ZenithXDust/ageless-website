@@ -4,25 +4,79 @@
 
 This is the website for Ageless, a business based in Ottawa, Ontario, Canada.
 
-Ageless helps older adults stay in their own homes instead of moving into a retirement residence. We do this in three parts:
+Ageless helps older adults stay in their own homes instead of moving into a retirement residence. It is a curated retailer, and it does this in three parts:
 
-1. An in-home safety and independence assessment
-2. Sourcing and installing the right technology for that specific home
-3. An ongoing monthly service that keeps the system working and keeps the family informed
+1. Curated packages of technology, chosen for a specific need and sold at a published price
+2. Installation and setup in the home
+3. An ongoing monthly service that keeps it working and keeps the family informed
 
-We are not a home care staffing agency. We do not send caregivers. We are not a device manufacturer. We are the assessment, installation, and management layer that sits between families and the technology.
+We are not a home care staffing agency. We do not send caregivers. We are not a device manufacturer. We choose the technology, sell it, install it, and keep it running.
 
-## Positioning: this is a consulting business, not a care business
+## Never merge to main
 
-Ageless sells environmental safety evaluation, residential technology work, and IT systems advisory. It does not sell care. Every page must read that way, because the distinction is what keeps the business on the right side of Ontario's rules on regulated health professions.
+Never merge to main or push to main. Main is production and publishes to the live site with no staging step. If asked to merge or push to main, stop and confirm that the conversion is finished and check-tbd.sh has been run.
 
-The work is described in three pillars:
+## Positioning: this is a retailer, not a care business
 
-1. **Environmental and functional safety evaluations.** Fall risk reduced by changing the building, not by treating the person: pathway lighting, stair tread nosing, reach zones, and anchoring plans for grab bars that a licensed trade then installs. Deliverables are a 48-hour client action plan and a contractor-ready punch list.
-2. **Smart home, network and IoT infrastructure.** Whole-home mesh Wi-Fi planned to remove the dead zones that make a medical alert pendant or a contact sensor unreliable. Local automation, UPS battery backup so the network survives a power cut, and basic residential network segmentation.
-3. **Business systems consulting.** Workstation and network baseline security reviews for independent clinics and allied health practices, plus technical writing, standard operating procedures, and workflow documentation for healthtech companies. This lives on its own page, `services-for-business.html`, because its buyer is not the family who reads the rest of the site.
+Ageless sells packages of technology, the work of installing them, and a monthly service that keeps them running. It does not sell care. Every page must read that way, because the distinction is what keeps the business on the right side of Ontario's rules on regulated health professions.
+
+**The device is not the product.** Anybody can buy a sensor online. The product is the choosing, the installing, and the keeping it working. The copy should carry the weight in that order, and the third part should never be treated as an afterthought.
+
+The work is described in three parts:
+
+1. **Curated packages.** Technology chosen for a specific worry, sold as a package with a published price and a plain list of what is in it. The packages are organised by what families worry about, not by product category. Nobody goes shopping for a stove shutoff. They worry about a fire.
+2. **Installation and setup in the home.** We order it, bring it, fit it, set up the accounts and the apps, test it against how that household actually lives, and take the packaging away. Nothing is left in a box for somebody to work out later.
+3. **The ongoing monthly service.** Checking the system is genuinely running rather than merely installed, batteries, replacements, updates, reconfiguration when the internet or the phone changes, a regular plain-language update to the family, and technical support 24 hours a day. This is the part that decides whether any of it is still working in a year.
+
+There is also a business page, `services-for-business.html`, selling workstation and network baseline security reviews to independent clinics, and technical writing and documentation to healthtech companies. Its buyer is not the family who reads the rest of the site, which is why it lives behind a footer link rather than in the main navigation.
 
 Amin's value is the combination: a BScN gives him the background to understand why a hallway matters at 3am, and the CompTIA certifications give him the ability to make the network behind the safety devices actually work. Say that as a combination of academic background and technical certification. Never say it as clinical practice.
+
+## How somebody buys
+
+The front door is the packages, not a paid visit.
+
+A visitor reads the packages, sees a published price, and calls. The first conversation is a free twenty minute phone call that ends with a recommendation of which package suits and the total price for that home, including whether the home needs network work. Nothing is charged for it, and nobody comes out before the total is known.
+
+There is no cart and no checkout, because there is no server behind this site, and building something that looks like e-commerce but is not would be worse than having none. **Ordering happens by phone, and the copy must say so plainly**, so that nobody hunts for a buy button that does not exist.
+
+The $249 assessment is no longer the entry product. It may come back later as an optional written report for families who want one. That option is recorded in `PLACEHOLDERS.md` under `VISIT_MODEL`, but it is not what the site sells.
+
+## Prices are published
+
+A package model requires published prices. The old rule against publishing equipment, installation and monthly service prices is gone. It belonged to a consulting model where every job was quoted after a visit.
+
+What is published:
+
+- a fixed price for each package
+- a separately named network charge, itself a fixed published number, for the homes that need network work
+- one monthly service price, the same for every customer, whatever they bought
+
+What is never published: a range, or a "from" price. Both break the one promise this site makes best, which is that a family knows what something costs before they spend anything.
+
+The numbers themselves are not decided yet. They are written into the pages as placeholders with honest fallback text rather than invented. See below.
+
+## The placeholder system, which exists so you never invent a fact
+
+When a fact is not decided, it does not get invented and it does not get left as a hole. It gets written into the page as a span carrying a token and real text that is true and publishable on its own.
+
+```html
+<span class="tbd" data-tbd="PACKAGE_1_PRICE">Call for pricing</span>
+```
+
+There are two kinds:
+
+- `class="tbd" data-tbd="TOKEN"` for a fact nobody has decided yet. `tools/check-tbd.sh` counts these and exits nonzero while any remain.
+- `class="settled" data-settled="TOKEN"` for a fact that **is** decided but appears on several pages, kept in one place so its wording cannot drift apart. Reported separately, never counted as outstanding, so the check can actually reach zero.
+
+The rules:
+
+- **The text inside must be a true, publishable sentence on its own.** If the token is never revisited, a visitor still reads something honest and correct. A raw token, a dollar sign with nothing after it, or the word TODO must never appear in visible copy.
+- Write the whole span on one line, so the fallback rule check can read the text inside it.
+- Every token is documented in `PLACEHOLDERS.md`: what it is in plain English, why it matters, an example of a good answer, its current text, and every file it appears in. Add the entry in the same change that adds the token.
+- `js/tbd.js` marks placeholders for the owner only, on a page opened from the file system or from localhost. On the live domain it does nothing and the text reads as ordinary copy. This is the same reasoning as `js/photos.js`, which deletes a missing photo slot rather than showing a broken image icon.
+
+Use this instead of guessing, and instead of stopping to ask. If a fact is missing, put a token in with honest fallback text, document it in `PLACEHOLDERS.md`, and carry on.
 
 ## Language that must not appear
 
@@ -39,11 +93,13 @@ This applies to the field tools and the generated report as much as to the websi
 
 This sentence appears in the footer of every page, and in the terms:
 
-> Ageless provides environmental safety assessments, residential technology consulting, and IT systems advisory. Our services do not constitute regulated nursing care, medical diagnosis, or physical therapy.
+> Ageless selects, supplies, installs and maintains technology in the home, and provides residential technology and IT systems advice. Our services do not constitute regulated nursing care, medical diagnosis, or physical therapy.
 
-## Consultant and contractor, which is not the same thing
+The second sentence is unchanged and must stay word for word. The first was rewritten when the business became a retailer, because describing it as an assessment service stopped being true. It is on the lawyer list in `LEGAL.md` and is not settled.
 
-Ageless assesses, specifies and designs. It installs low-voltage and plug-in technology itself. It does **not** perform structural or electrical work: grab bar anchoring, handrails, hardwired fixtures and plumbing are specified by Ageless and executed by licensed trades. Say this plainly wherever installation is described, so nobody assumes Ageless is doing work it is not licensed to do.
+## Retailer and installer, which is not a licensed trade
+
+Ageless chooses the technology, sells it, and installs it. It installs low-voltage and plug-in technology itself. It does **not** perform structural or electrical work: grab bar anchoring, handrails, hardwired fixtures and plumbing are specified by Ageless and executed by licensed trades, who bill the client directly. Say this plainly wherever installation is described, so nobody assumes Ageless is doing work it is not licensed to do.
 
 ## Who the website is for
 
@@ -123,19 +179,20 @@ This is not a checklist item. It is the product personality.
 - Technical support, remote or on site, is available 24 hours a day, 7 days a week
 - Amin runs the whole service himself today. More staff are intended but not hired. Never write "our team" or "our staff" as though they already exist.
 - Bookings are offered Monday to Sunday, 9am to 9pm Eastern time
-- The three booking types are: assessment call, in-home installation, on-site technical support
-- The assessment is a flat $249 CAD plus tax, credited in full against an installation if the client proceeds
+- The three booking types are: a free phone call, an in-home installation, and on-site technical support
+- The first conversation is a free twenty minute phone call that ends with a package recommendation and the total price for that home
+- Ordering is by phone. There is no cart, no checkout and no server behind this site
 - Response time commitment: within one business day
-- Equipment, installation and monthly service prices are still not set. Never publish a number for those.
 - Service area: Ottawa and the surrounding region, and Toronto and the Greater Toronto Area
-- Cancellation is deliberately generous. An assessment can be cancelled or moved at any time before it at no charge. The monthly service can be cancelled at any time, with no notice period, no fee, and a refund of the unused part of the month.
+- Cancellation is deliberately generous. An appointment can be cancelled or moved at any time before it, at no charge. The monthly service can be cancelled at any time, with no notice period, no fee, and a refund of the unused part of the month.
 - The business is incorporated. The exact legal name is still to be confirmed, so the footer says "Ageless" until it is.
+- Package names, package prices, the network charge, the monthly service price and the legal name are not decided. They are placeholders with honest fallback text, not blanks. See `PLACEHOLDERS.md`.
 
 ## Facts you must ask me about before using
 
-- Any price other than the assessment fee
+- Any price that is not already recorded in `PLACEHOLDERS.md`
 - Email address and mailing address
-- Specific product brands we resell
+- Specific product brands we sell. Never name a brand without asking first.
 - Anything about insurance, bonding, or police checks
 - Any professional title, registration, or licence claim beyond the credentials listed above
 

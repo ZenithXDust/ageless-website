@@ -845,12 +845,16 @@ input:focus-visible, textarea:focus-visible, select:focus-visible {
 /* --------------------------------------------------------------------------
    15. PLACEHOLDERS
 
-   A .tbd span marks a fact that has not been decided yet: a package name, a
-   price, the registered legal name. It always contains real fallback text
-   that is true and publishable on its own, so in normal use it needs no
-   styling at all, and it deliberately has none. On the live site a
-   placeholder is indistinguishable from ordinary copy, because that is what
-   a visitor should be reading.
+   Two kinds of placeholder, both of which always contain real text that is
+   true and publishable on its own.
+
+   .tbd      a fact nobody has decided yet: a package name, a price.
+   .settled  a fact that IS decided, but which appears on several pages and
+             is kept in one place so the wording cannot drift.
+
+   Neither needs any styling in normal use, and neither has any. On the live
+   site a placeholder is indistinguishable from ordinary copy, because that
+   is what a visitor should be reading.
 
    The amber marking below applies only once js/tbd.js has added .tbd-show to
    the <html> element, which it does only for a page opened from the file
@@ -884,11 +888,37 @@ html.tbd-show .tbd::after {
   color: #5A3D00;
 }
 
-/* Printing a local copy to mark up by hand. Amber backgrounds waste ink and
-   some printers drop them entirely, so the outline does the work on paper. */
+
+/* Settled and centralised. Marked in a quieter green rather than amber,
+   because these are not unfinished work and should not compete for attention
+   with the ones that are. Still visibly marked, because knowing which strings
+   are shared across pages is the point of having them. */
+html.tbd-show .settled {
+  background: #E8F1EA;
+  color: #1B3A2C;
+  outline: 1px dotted #2F6B52;
+  outline-offset: 2px;
+  border-radius: 3px;
+  padding: 0 0.15em;
+}
+
+html.tbd-show .settled::after {
+  content: " [" attr(data-settled) "]";
+  font-family: var(--sans);
+  font-size: 0.75em;
+  letter-spacing: 0.04em;
+  color: #2F6B52;
+}
+
+/* Printing a local copy to mark up by hand. Coloured backgrounds waste ink and
+   some printers drop them entirely, so the outlines do the work on paper. */
 @media print {
   html.tbd-show .tbd {
     background: none;
     outline: 1px dashed #000;
+  }
+  html.tbd-show .settled {
+    background: none;
+    outline: 1px dotted #000;
   }
 }

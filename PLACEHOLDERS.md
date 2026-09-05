@@ -7,32 +7,49 @@ prices, the exact registered legal name. Rather than invent them or leave
 holes in the pages, each one is written into the site as a placeholder that
 already reads correctly.
 
-## What a placeholder looks like
+## Two kinds of placeholder
+
+**Undecided, and blocking.** Nobody has settled this fact yet.
 
 ```html
 <span class="tbd" data-tbd="PACKAGE_1_PRICE">Call for pricing</span>
 ```
 
-Two parts. A token, so it can be found again, and fallback text that is true
-and publishable exactly as it stands.
+`tools/check-tbd.sh` counts these and exits nonzero while any remain. They
+are what the pre-merge check exists to find.
+
+**Settled, and centralised.** This fact *is* decided, but it appears on more
+than one page, and a site where each page carries its own wording of the same
+promise is a site that ends up contradicting itself.
+
+```html
+<span class="settled" data-settled="VISIT_MODEL">a free twenty minute phone call</span>
+```
+
+These are reported separately and are **not** counted as outstanding, because
+nothing is waiting on them. A settled token is a maintenance aid, not
+unfinished work.
+
+Keeping the two apart is what lets the check reach zero. If every token
+counted as outstanding forever, the gate could never pass, and a gate that
+can never pass is a gate you learn to ignore.
 
 ## The four rules
 
-1. **The fallback must be a true, publishable sentence on its own.** If a
-   token is never filled in, a visitor still reads something honest and
-   correct. A raw token, a dollar sign with nothing after it, or the word
-   TODO must never appear in visible copy.
+1. **The text must be a true, publishable sentence on its own.** This applies
+   to both kinds. If a token is never revisited, a visitor still reads
+   something honest and correct. A raw token, a dollar sign with nothing
+   after it, or the word TODO must never appear in visible copy.
 2. **This is the same principle as `js/photos.js`.** That file deletes a
    reserved photo space when the photograph does not exist yet, rather than
    showing a broken image icon. The page is complete either way. Placeholders
-   do the same thing with words: unfinished is visible to you and invisible
-   to a visitor.
+   do the same thing with words.
 3. **`js/tbd.js` shows them to you and to nobody else.** Open any page from
-   your own disk, or from localhost, and every placeholder is marked amber
-   with a dashed outline and its token name beside it. On the live domain the
-   script does nothing at all, and the fallback text reads as ordinary copy.
-4. **`tools/check-tbd.sh` lists what is left.** One command, run before
-   merging.
+   your own disk, or from localhost, and undecided placeholders are marked
+   amber with a dashed outline, settled ones a quieter green with a dotted
+   one, each labelled with its token. On the live domain the script does
+   nothing at all and everything reads as ordinary copy.
+4. **`tools/check-tbd.sh` lists what is left.** One command, before merging.
 
 ## How to fill one in
 
@@ -53,15 +70,20 @@ After:
 
 Then run `tools/check-tbd.sh` to confirm it has gone from the list.
 
+A settled token is different. You are not filling it in, you are **changing a
+decision**, so change it in every page at once and update the entry here at
+the same time. `tools/check-tbd.sh --by-token` tells you every place it
+appears.
+
 ## Checking what is left
 
 ```
-tools/check-tbd.sh              every outstanding token, with file and line
+tools/check-tbd.sh              both lists, the counts, and an exit code
 tools/check-tbd.sh --by-token   the same thing grouped by token
 ```
 
-Exit codes: `0` nothing left, `1` placeholders remain, which is normal and
-expected for now, `2` a placeholder breaks rule 1 and wants fixing.
+Exit codes: `0` nothing undecided, `1` undecided placeholders remain, `2` a
+placeholder of either kind has text that must not be published.
 
 A GitHub Action runs the same script on every push and writes the result into
 the run summary. It reports, it does not block. Publishing is a legacy Pages
@@ -72,9 +94,8 @@ stop the site going live.
 
 # Decisions already made
 
-These were settled while the retail rewrite was being built. They are
-recorded here because changing any of them changes copy on more than one
-page, and this is where you would come to change them.
+Changing any of these changes copy on more than one page. This is where you
+would come to change them.
 
 ## The four packages
 
@@ -95,60 +116,84 @@ already says so plainly: a pendant left on the dresser protects nobody.
 Bundling the two would force such a family to buy the exact thing the site
 tells them will not work.
 
-## How the packages relate to each other
+## The packages are independent
 
 **All four stand alone and can be bought in any order. The prices do not
-compound. There is no package you have to buy first.**
+compound. There is no package anybody has to buy first.**
 
-The Foundation is not a base layer, and this was a real decision rather than
-an obvious one. The only thing packages 2, 3 and 4 genuinely depend on is a
-working network in that particular home. They do not depend on the rest of
-the Foundation: the motion lighting, the keyless entry, the leak sensors.
+The Foundation is not a base layer. The only thing packages 2, 3 and 4
+genuinely depend on is a working network in that particular home. They do not
+depend on the rest of the Foundation: the motion lighting, the keyless entry,
+the leak sensors. Making the Foundation compulsory would force a family who
+wants a pill dispenser to also buy lighting they may not need, which is the
+exact behaviour this site argues against everywhere else.
 
-Making the Foundation compulsory would therefore force a family who wants a
-pill dispenser to also buy lighting they may not need, which is the exact
-behaviour this site argues against everywhere else.
+Carried on the site by `PACKAGE_ORDER_RULE`, which is settled.
 
-So the network is handled a different way: **every package includes whatever
-network work that home needs to make that package actually run.** It is part
-of the installation and part of the price, not a separate purchase. That also
-puts the emphasis where the business actually is, on the choosing, the
-installing and the keeping it working, rather than on the box.
+> **If you ever change this** and decide the Foundation is a prerequisite,
+> the prices compound and the shop page has to say so in the price itself,
+> not in a footnote. Revisit every `PACKAGE_N_PRICE` at the same time.
 
-The token `PACKAGE_ORDER_RULE` carries this sentence on the site.
+## How the network work is priced
 
-> **If you change this**, and decide the Foundation is a prerequisite after
-> all, then the prices compound and the shop page has to say so in the price
-> itself, not in a footnote. Package 2 would have to read as "Foundation plus
-> $X", or as a combined total. Change `PACKAGE_ORDER_RULE`, and revisit every
-> `PACKAGE_N_PRICE` at the same time.
+**A fixed package price, plus a separately named network charge which is
+itself a published fixed number.** Not "varies". Not "from".
+
+The mechanism, which the copy has to make plain:
+
+1. The free phone call asks the two or three questions needed to know whether
+   that home needs network work.
+2. The caller is told **the total** on that call, before anybody comes out.
+3. The network charge reads on the page as a known, named item with a price
+   on it, never as a surprise added later.
+
+Two reasons this was chosen over the alternatives, recorded so nobody
+reopens it in six months:
+
+- A "from" price is the exact thing the families reading this site have been
+  burned by before. It undoes the one promise the site makes best, which is
+  that they know the cost before they spend anything.
+- Unpriced variance cannot be absorbed at this volume. One bad house would
+  take the margin off several good ones.
+
+### Rejected, and why
+
+**Rejected: a single fixed price with the network work absorbed.** Requires
+volume that does not exist yet to average out across houses. One difficult
+house wipes out the margin on several straightforward ones. Revisit only if
+volume grows enough that the average becomes reliable rather than hopeful.
+
+**Rejected: "from $X", with the network work quoted after the call.** It is
+what most trades do, and it is honest in the narrow sense. But "from" is the
+word this audience has learned to distrust, and it breaks the promise that a
+family knows the total before they spend anything. That promise is the best
+piece of writing on the site and it is not worth trading for pricing
+convenience.
 
 ## One monthly price, not one per package
 
-`MONTHLY_PRICE` is a single price that applies to every customer, whatever
-they bought. Simpler to explain, simpler to sell, and it is consistent with
-the monthly service being the product rather than an add-on priced off the
-hardware.
+`MONTHLY_PRICE` is a single price applying to every customer, whatever they
+bought. Simpler to explain, simpler to sell, and consistent with the monthly
+service being the product rather than an add-on priced off the hardware.
 
-> **The alternative**, if it turns out that a four-package home costs
-> meaningfully more to keep running than a one-package home: split it into
+> **The alternative**, if a four-package home turns out to cost meaningfully
+> more to keep running than a one-package home: split it into
 > `PACKAGE_1_MONTHLY` through `PACKAGE_4_MONTHLY`, one per row of the pricing
 > table. The table already has a monthly column per package, so the change is
-> mechanical: replace the single repeated token with four distinct ones. Say
-> plainly on the page which it is, because a monthly price that varies and is
-> not explained reads as a price that is being hidden.
+> mechanical. Say plainly on the page which it is, because a monthly price
+> that varies and is not explained reads as a price being hidden.
 
 ---
 
-# The tokens
+# Undecided, and blocking
 
-Seventeen tokens, plus one added during the build and marked as such.
+Seventeen tokens. These are what `tools/check-tbd.sh` counts.
 
-The **appears in** line is filled in once the tokens are placed in the pages,
-and `tools/check-tbd.sh --by-token` regenerates it at any time, so it cannot
+The **appears in** line is filled once the tokens are placed in the pages, and
+`tools/check-tbd.sh --by-token` regenerates it at any time, so it cannot
 silently go out of date.
 
-## Packages
+## The packages
 
 ### PACKAGE_1_NAME
 
@@ -164,12 +209,13 @@ silently go out of date.
 
 ### PACKAGE_1_PRICE
 
-- **What it is:** what the first package costs, before tax.
+- **What it is:** what the first package costs, before tax and before any
+  network charge.
 - **Why it matters:** publishing prices is the whole point of the retail
   model. A package with no number is a consultation with extra steps.
-- **Good answer:** a number in Canadian dollars, and a decision about whether
-  it is fixed or a starting point. See the note on price shape below.
-- **Example:** `$890 plus tax`, or `from $890 plus tax`
+- **Good answer:** a fixed number in Canadian dollars. Not a range, not a
+  "from". See the pricing decision above.
+- **Example:** `$890 plus tax`
 - **Fallback now:** Call for pricing
 - **Appears in:** not yet placed
 
@@ -210,43 +256,31 @@ The activity and check-ins package.
   existing worry copy
 - **Appears in:** not yet placed
 
-### A question about the shape of every price
-
-Because each package includes whatever network work that home needs, the real
-cost varies between a house that already has good coverage and a house that
-does not.
-
-You have to pick one of these, and the page has to say which:
-
-1. **A fixed price**, and you absorb the difference on awkward houses. Easiest
-   to publish, easiest to trust, and it means some jobs are less profitable
-   than others.
-2. **"From $X"**, with the network work quoted after the free call. Honest,
-   and it is what most trades do, but "from" is the word people have learned
-   to distrust.
-3. **A fixed price plus a separately named network charge**, quoted before
-   anything is bought. The most transparent, and the most to explain.
-
-There is no right answer here, only a decision. Whichever you pick goes into
-`PACKAGE_N_PRICE`, and the copy around it has to match.
-
 ## The rest
 
-### PACKAGE_ORDER_RULE
+### NETWORK_CHARGE
 
-- **Added during the build**, and not on the original token list. It is here
-  because whether the packages stand alone is exactly the kind of fact that
-  might change, and it is stated on more than one page.
-- **What it is:** the sentence saying the packages can be bought in any
-  order, with nothing required first.
-- **Why it matters:** it is the difference between a shop and a funnel. If it
-  is ever wrong, the site is quietly misleading people about what they have
-  to spend.
-- **Good answer:** one plain sentence. See the decision recorded above.
-- **Fallback now:** Every package works on its own. Buy one, or several, in
-  whatever order suits. Each one includes the network setup that home needs
-  to make it work, so there is nothing you have to buy first.
+- **Added during the build**, and not on the original token list. It exists
+  because of the pricing decision above: the network work is a separately
+  named item with its own published price.
+- **What it is:** the fixed price for making a home's network good enough to
+  run the equipment reliably. Mesh coverage where a pendant is actually worn,
+  no dead zones where a sensor sits.
+- **Why it matters:** it is the difference between a published total and a
+  surprise. It is also the single most likely thing to be read as a hidden
+  extra, so the number has to be visible next to the package prices rather
+  than explained after them.
+- **Good answer:** one fixed number, and a plain statement of who needs it.
+  The free call determines whether a given home does, and the caller is told
+  the total before anybody visits.
+- **Example:** `$340 plus tax, and we tell you on the call whether your
+  parent's home needs it.`
+- **Fallback now:** Some homes need network work first, and some do not. We
+  ask two or three questions on the call and tell you the total before anybody
+  comes out.
 - **Appears in:** not yet placed
+- **Note:** the fallback is deliberately true whichever number you pick, and
+  it already describes the mechanism, so the page reads correctly today.
 
 ### INSTALL_INCLUDED
 
@@ -262,9 +296,11 @@ There is no right answer here, only a decision. Whichever you pick goes into
 - **Fallback now:** Installation is included. We fit it, set it up and test
   it, and we take the packaging away with us.
 - **Appears in:** not yet placed
-- **Note:** that fallback asserts installation **is** included. If that is
-  wrong, this is the highest priority token on the list, because it is the
-  one most likely to be read as a promise.
+- **Note, and this one wants an answer:** the pricing decision named exactly
+  two line items, the package and the network charge. That implies
+  installation sits inside the package price, and the fallback above asserts
+  it does. If that is wrong, this is the highest priority token on the list,
+  because it is the one most likely to be read as a promise.
 
 ### MONTHLY_PRICE
 
@@ -272,7 +308,7 @@ There is no right answer here, only a decision. Whichever you pick goes into
 - **Why it matters:** the monthly service is the actual product. It is the
   number that decides whether this business is worth running.
 - **Good answer:** one price per household, per month, in Canadian dollars.
-  See the decision recorded above about not varying it per package.
+  See the decision above about not varying it per package.
 - **Example:** `$45 a month plus tax`
 - **Fallback now:** Call for the monthly price
 - **Appears in:** not yet placed
@@ -303,27 +339,6 @@ Three honest options, all true as far as is known:
    Shortest and safest. Says less, promises less, and drops the independence
    point entirely.
 
-### VISIT_MODEL
-
-- **What it is:** how somebody gets from interested to buying. The front door.
-- **Why it matters:** it replaces the $249 assessment as the entry product,
-  and it is referenced on the home page, how it works, pricing and booking.
-- **Fallback now:** a free twenty minute phone call that ends with a
-  recommendation of which package suits, with no obligation
-- **Appears in:** not yet placed
-
-Two alternatives, kept here so you can switch by editing this one token and
-the copy it names:
-
-1. **A small fitting fee, credited against the package.** It filters out
-   tyre-kickers and pays for the trip. It also adds friction at exactly the
-   point where an anxious family is most likely to stop, and reintroduces the
-   thing the retail model was meant to remove.
-2. **Keep the $249 assessment, as an optional written report.** Some families
-   genuinely want the document, for a sibling or for a care conference, and it
-   is real work worth real money. Sold as an extra rather than as the way in.
-   The risk is that it quietly becomes the front door again.
-
 ### LEGAL_NAME
 
 - **What it is:** the exact registered legal name of the incorporated
@@ -337,3 +352,50 @@ the copy it names:
 - **Example:** `1234567 Ontario Inc., operating as Ageless`
 - **Fallback now:** Ageless
 - **Appears in:** not yet placed
+
+---
+
+# Settled, and centralised
+
+Two tokens. Decided, not waiting on anybody, and kept in one place only
+because they appear on several pages and must not drift apart.
+`tools/check-tbd.sh` reports them separately and does **not** count them as
+outstanding.
+
+### PACKAGE_ORDER_RULE
+
+- **What it is:** the sentence saying the packages can be bought in any
+  order, with nothing required first.
+- **Why it is centralised:** it is the difference between a shop and a
+  funnel. If one page said it and another implied otherwise, the site would
+  be quietly misleading people about what they have to spend.
+- **Settled as:** Every package works on its own. Buy one, or several, in
+  whatever order suits. Each one includes the setup that home needs to make
+  it work, so there is nothing you have to buy first.
+- **Appears in:** not yet placed
+- **To change it:** see the package independence decision above, and revisit
+  every `PACKAGE_N_PRICE` at the same time.
+
+### VISIT_MODEL
+
+- **What it is:** how somebody gets from interested to buying. The front
+  door, replacing the $249 assessment.
+- **Why it is centralised:** it is named on the home page, how it works,
+  pricing and booking. Four pages describing the first conversation four
+  slightly different ways is how a visitor stops believing any of them.
+- **Settled as:** a free twenty minute phone call that ends with a
+  recommendation of which package suits, and the total price for that home,
+  with no obligation
+- **Appears in:** not yet placed
+
+Two alternatives, kept so the decision can be reversed by editing this one
+token and the copy it names:
+
+1. **A small fitting fee, credited against the package.** It filters out
+   tyre-kickers and pays for the trip. It also adds friction at exactly the
+   point where an anxious family is most likely to stop, and reintroduces the
+   thing the retail model was meant to remove.
+2. **Keep the $249 assessment, as an optional written report.** Some families
+   genuinely want the document, for a sibling or for a care conference, and it
+   is real work worth real money. Sold as an extra rather than as the way in.
+   The risk is that it quietly becomes the front door again.

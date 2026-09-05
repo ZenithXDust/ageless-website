@@ -3,23 +3,36 @@
 
    Some facts about this business are not decided yet: the package names, the
    prices, the exact registered legal name. Rather than invent them, or leave
-   a hole in the page, every undecided fact is written as a span carrying two
-   things:
+   a hole in the page, every one is written as a span carrying two things: a
+   token, so it can be found later, and real text that is true and
+   publishable on its own.
 
-     - a token, so it can be found later
-     - real fallback text that is true and publishable on its own
+   There are two kinds, and the difference matters.
+
+   UNDECIDED, and blocking. Nobody has settled this fact yet.
 
        <span class="tbd" data-tbd="PACKAGE_1_PRICE">Call for pricing</span>
 
-   The fallback is the important half. If nobody ever fills that token in, a
-   visitor still reads an honest, correct sentence. A raw token, a bare dollar
-   sign, or the word TODO must never reach a reader.
+   SETTLED, and centralised. This fact IS decided, but it is written into
+   more than one page, and each page carrying its own wording is how a site
+   ends up contradicting itself.
+
+       <span class="settled" data-settled="VISIT_MODEL">a free twenty minute
+       phone call</span>
+
+   tools/check-tbd.sh counts only the first kind, so the pre-merge check can
+   actually reach zero rather than failing forever and being ignored.
+
+   The text inside is the important half of both. If nobody ever revisits a
+   token, a visitor still reads an honest, correct sentence. A raw token, a
+   bare dollar sign, or the word TODO must never reach a reader.
 
    This file exists so that the person filling them in can SEE them. It marks
-   every placeholder in amber with a dashed outline, but only when the page is
-   being looked at locally: opened straight off the disk, or served from
-   localhost. On the live domain this file does nothing at all, and the
-   fallback text reads as ordinary copy, which is exactly what it is.
+   the undecided ones in amber with a dashed outline, and the settled ones in
+   a quieter green, but only when the page is being looked at locally: opened
+   straight off the disk, or served from localhost. On the live domain this
+   file does nothing at all, and the text reads as ordinary copy, which is
+   exactly what it is.
 
    THIS IS THE SAME IDEA AS js/photos.js
 
@@ -78,10 +91,16 @@
   // a broken image behind.
   document.documentElement.classList.add("tbd-show");
 
-  var marks = document.querySelectorAll(".tbd");
+  // Both kinds get named on hover. The selector takes them together.
+  var marks = document.querySelectorAll(".tbd, .settled");
 
   Array.prototype.forEach.call(marks, function (mark) {
-    var token = mark.getAttribute("data-tbd") || "UNNAMED";
+    var token =
+      mark.getAttribute("data-tbd") ||
+      mark.getAttribute("data-settled") ||
+      "UNNAMED";
+
+    var settled = mark.getAttribute("data-settled") !== null;
 
     // Name each placeholder on hover, so that working out which token is
     // which does not mean opening the HTML. This only ever runs locally, so
@@ -90,7 +109,9 @@
     if (!mark.getAttribute("title")) {
       mark.setAttribute(
         "title",
-        "Placeholder " + token + ". Fallback text shown. See PLACEHOLDERS.md."
+        (settled ? "Settled, centralised: " : "Undecided: ") +
+          token +
+          ". See PLACEHOLDERS.md."
       );
     }
   });
@@ -98,10 +119,14 @@
   // A count in the console, so it is obvious at a glance whether the page
   // being looked at still has anything outstanding on it.
   if (window.console && window.console.log) {
+    var open = document.querySelectorAll(".tbd").length;
+    var fixed = document.querySelectorAll(".settled").length;
     window.console.log(
       "[placeholders] " +
-        marks.length +
-        " on this page. Run tools/check-tbd.sh for the full list."
+        open +
+        " undecided, " +
+        fixed +
+        " settled on this page. Run tools/check-tbd.sh for the full list."
     );
   }
 })();
